@@ -7,6 +7,9 @@ function Gallery () {
             <Header/>
             <div className="pageWrapper">
                 <h2>Gallery</h2>
+                <div className="galleryWrapper">
+        
+                </div>
             </div>
         </>
     )

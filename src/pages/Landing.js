@@ -16,12 +16,7 @@ function Landing() {
       webcamElement,
       "user",
       canvasElement,
-      snapSoundElement,
-      {
-        width: { ideal: 384 },
-        height: { ideal: 576 },
-        aspectRatio: { ideal: 0.6666666667 }
-      }
+      snapSoundElement
     );
 
     setWebcam(webcamInstance);
@@ -52,7 +47,7 @@ function Landing() {
   const handleCapture = () => {
     if (webcam) {
       const picture = webcam.snap();
-      document.querySelector("#download-photo").href = picture;
+      document.querySelector("#photo").href = picture;
     }
   };
 
@@ -67,24 +62,20 @@ function Landing() {
                 <FormControlLabel control={<Switch default />} onClick={handlePermission} label="Camera Access" />
             </FormGroup>
           </div>
-          <div className="cameraStream">
-            <video
-              id="webcam"
-              autoPlay
-              playsInline
-              width={384}
-              height={576}
-            ></video>
-            <canvas id="canvas" width="384" height="576" class="d-none"></canvas>
+          <div className="cameraCanvasWrapper">
+            <div className="cameraStream">
+                <video id="webcam"></video>
+            </div>
+            <div className="imageCanvas">
+                <canvas id="canvas" width="384" height="576"></canvas>
+            </div>
           </div>
+          
           <div className="captureButton">
-            <button onClick={handleCapture}>Take photo</button>
-            {/* <a id="download-photo" download="selfie.png">
-              Download photo
-            </a> */}
-            <a id="download-photo" download="selfie.bmp">
-              Create bitmap
+            <button id="captureButton" onClick={handleCapture}>Take photo</button>
+            <a id="photo" download="selfie.png">
             </a>
+            {/* <a id="download-photo" download="selfie.bmp"></a> */}
           </div>
         </div>
       </div>
