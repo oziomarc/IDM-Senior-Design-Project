@@ -16,7 +16,12 @@ function Landing() {
       webcamElement,
       "user",
       canvasElement,
-      snapSoundElement
+      snapSoundElement,
+      {
+        width: { ideal: 384 },
+        height: { ideal: 576 },
+        aspectRatio: { ideal: 0.6666666667 }
+      }
     );
 
     setWebcam(webcamInstance);
@@ -67,15 +72,18 @@ function Landing() {
               id="webcam"
               autoPlay
               playsInline
-              width="384"
-              height="576"
+              width={384}
+              height={576}
             ></video>
-            <canvas id="canvas" className="canvas"></canvas>
+            <canvas id="canvas" width="384" height="576" class="d-none"></canvas>
           </div>
           <div className="captureButton">
             <button onClick={handleCapture}>Take photo</button>
-            <a id="download-photo" download="selfie.png">
+            {/* <a id="download-photo" download="selfie.png">
               Download photo
+            </a> */}
+            <a id="download-photo" download="selfie.bmp">
+              Create bitmap
             </a>
           </div>
         </div>
