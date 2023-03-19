@@ -136,3 +136,14 @@ button:hover {
 .galleryPage h2 {
   color: aliceblue;
 }
+
+.galleryWrapper {
+
+}
+
+.galleryItem {
+  border: 0.5px solid #e4e4e4;
+  height: 564px;
+  padding-bottom: 42px;
+  width: 435px;
+}

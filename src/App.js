@@ -3,12 +3,18 @@ import Landing from './pages/Landing';
 import Gallery from './pages/Gallery';
 import Booth from './pages/Booth';
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
-// import { useEffect, useState } from "react";
-// import {initializeApp} from "firebase/app"
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
-// const firebaseConfig = {
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyAbaPabQkl9fmo8yHUmCtek7KowWK1AWsU",
+  authDomain: "photobooth-7ee4c.firebaseapp.com",
+  projectId: "photobooth-7ee4c",
+  storageBucket: "photobooth-7ee4c.appspot.com",
+  messagingSenderId: "343204330461",
+  appId: "1:343204330461:web:398d0e337c44bec2cf9434"
+};
 
 function App() {
 
