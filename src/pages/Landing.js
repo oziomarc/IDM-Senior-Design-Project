@@ -1,82 +1,36 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
-import Webcam from "webcam-easy";
-import { Switch, FormGroup, FormControlLabel } from '@mui/material';
 
 function Landing() {
-  const [webcam, setWebcam] = useState(null);
-  const [active, setActive] = React.useState(true);
-
-  useEffect(() => {
-    const webcamElement = document.getElementById("webcam");
-    const canvasElement = document.getElementById("canvas");
-    const snapSoundElement = document.getElementById("snapSound");
-
-    const webcamInstance = new Webcam(
-      webcamElement,
-      "user",
-      canvasElement,
-      snapSoundElement
-    );
-
-    setWebcam(webcamInstance);
-
-    // Cleanup function to stop the webcam when the component unmounts
-    return () => {
-      webcamInstance.stop();
-    };
-  }, []);
-
-  const handlePermission = () => {
-    setActive(!active)
-    if (webcam && active) {
-      webcam
-        .start()
-        .then(() => {
-          console.log("webcam started");
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        }
-    else {
-        webcam.stop()
-    }
-    };
-
-  const handleCapture = () => {
-    if (webcam) {
-      const picture = webcam.snap();
-      document.querySelector("#photo").href = picture;
-    }
-  };
-
   return (
     <>
       <Header />
       <div className="pageWrapper">
-        <h2>Landing</h2>
-        <div className="boothWrapper">
-          <div className="permissionButton">
-            <FormGroup>
-                <FormControlLabel control={<Switch default />} onClick={handlePermission} label="Camera Access" />
-            </FormGroup>
-          </div>
-          <div className="cameraCanvasWrapper">
-            <div className="cameraStream">
-                <video id="webcam"></video>
+        <div className="heroSection">
+            <div className="define-visible">
+                <h3>self-portrait</h3>
+                <h4>self-por·​trait</h4>
+                <h4>noun</h4>
+                <p>A self-portrait is a representation of an artist that is drawn, painted, photographed, or sculpted by that artist.</p>
             </div>
-            <div className="imageCanvas">
-                <canvas id="canvas" width="384" height="576"></canvas>
-            </div>
-          </div>
-          
-          <div className="captureButton">
-            <button id="captureButton" onClick={handleCapture}>Take photo</button>
-            <a id="photo" download="selfie.png">
-            </a>
-            {/* <a id="download-photo" download="selfie.bmp"></a> */}
-          </div>
+            <div className="define-hidden">
+                <h3>selfie</h3>
+                <h4>sel·fie</h4>
+                <h4>/ˈselfē/</h4>
+                <h4>noun INFORMAL</h4>
+                <p>A photograph that one has taken of oneself, typically one taken with a smartphone or webcam and shared via social media.</p>
+            </div>    
+        </div>
+        <div id="about">
+            <p>Capturing Humanity is an interactive installation that showcases the history of humanity through self-portraits, also known as 'selfies'. The project invites passersby to take self-portraits and contribute to a gallery and timeline of self-portraits throughout history. This creates a sense of connection and identity among people, while demonstration how human behavior has evolved alongside technology.</p>
+            <p>The installation also aims to evoke a vintage, nostalgic feeling that is tied to the history of image capture. This is achieved through the website UI and a thermal printer that provides participants with a keepsake portrait, similar to a photo booth.</p>  
+            <p>Overall, the project places the tradition of self-portraits within a larger context of human history and identity.</p>
+        </div>
+        <div className="buttonClass">
+            <Link to="/booth" style={{ textDecoration: 'none' }}>
+                <p>CAPTURE YOUR LEGACY</p>
+            </Link>
         </div>
       </div>
     </>
