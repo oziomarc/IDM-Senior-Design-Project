@@ -3,7 +3,7 @@ import Landing from './pages/Landing';
 import Gallery from './pages/Gallery';
 import Booth from './pages/Booth';
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {initializeApp} from "firebase/app"
 import { getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
@@ -17,14 +17,14 @@ const firebaseConfig = {
 };
 
 function App() {
+  const [capturedImage, setCapturedImage] = useState(null);
+  const [uploadSuccessful, setUploadSuccessful] = useState(false)
+  const [appInitialized, setAppInitialized] = useState();
 
-  // const [appInitialized, setAppInitialized] = useState();
-  // const [userCaption, setUserCaption] = useState({});
-
-  // useEffect(() => {
-  //   const app = initializeApp(firebaseConfig);
-  //   setAppInitialized(true)
-  // },[]) 
+  useEffect(() => {
+    const app = initializeApp(firebaseConfig);
+    setAppInitialized(true)
+  },[]) 
 
   // useEffect(() => {
   //   if (appInitialized) {
@@ -45,7 +45,9 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Landing />
+      element: <Landing 
+      app={appInitialized}
+      />
     },
     {
       path: "/gallery",
@@ -53,7 +55,16 @@ function App() {
     },
     {
       path: "/booth",
-      element: <Booth />
+      element: <Booth 
+      capturedImage={capturedImage}
+      setCapturedImage={setCapturedImage}
+      uploadSuccessful={uploadSuccessful}
+      setUploadSuccessful={setUploadSuccessful}
+      />
+    },
+    {
+      path: "/save-image",
+      element: <saveImage />
     },
   ]);
 
