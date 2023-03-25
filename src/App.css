@@ -52,7 +52,32 @@ header h1:hover, h2:hover {
 }
 
 #about {
+  display: flex;
+  flex-direction: column;
   padding: 10vh 10vw;
+}
+
+#author {
+  align-items: center;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
+#author img {
+  height: 150px;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+#author p {
+  font-size: 12px;
+  width: 100px;
+  margin: 0;
+  padding: 0;
 }
 
 #about p {
@@ -138,12 +163,26 @@ button:hover {
 }
 
 .galleryWrapper {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.galleryWrapper > div {
+  margin: 4vmin;
 }
 
 .galleryItem {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(249, 247, 239);
   border: 0.5px solid #e4e4e4;
-  height: 564px;
-  padding-bottom: 42px;
-  width: 435px;
+  height: 514px;
+  width: 380px;
+}
+
+.galleryItem img {
+  height: 410px;
+  margin-top: 20px;
+  width: 332px;
 }
