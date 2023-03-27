@@ -4,6 +4,7 @@ import Gallery from './pages/Gallery';
 import Booth from './pages/Booth';
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import {initializeApp} from "firebase/app"
+import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
@@ -51,11 +52,15 @@ function App() {
     },
     {
       path: "/gallery",
-      element: <Gallery />
+      element: <Gallery 
+      app={appInitialized}
+      />
+      
     },
     {
       path: "/booth",
       element: <Booth 
+      app={appInitialized}
       capturedImage={capturedImage}
       setCapturedImage={setCapturedImage}
       uploadSuccessful={uploadSuccessful}
