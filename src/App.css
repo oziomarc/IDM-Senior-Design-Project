@@ -118,7 +118,7 @@ header h1:hover, p:hover {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  padding: 10vh 10vw;
+  padding: 10vh 10vw 20vh;
 }
 
 #about p {
@@ -127,9 +127,10 @@ header h1:hover, p:hover {
   display: flex;
   flex-direction: column;
   font-family: 'Work Sans', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 150;
   line-height: 2rem;
+  padding: 2vmin;
   text-align: center;
 }
 
@@ -156,16 +157,16 @@ header h1:hover, p:hover {
   padding: 0;
 }
 
-.buttonClass {
+/* .buttonClass {
   display: flex;
   flex-direction: row;
   justify-content: center;
   padding-bottom: 10vh;
-}
+} */
 
-.buttonClass p {
+/* .buttonClass p {
   text-decoration: underline;
-}
+} */
 
 /* BOOTH */
 
@@ -207,19 +208,29 @@ img {
   object-fit: cover;
 }
 
-button:hover {
-  cursor: pointer;
-}
-
 .buttons {
+  justify-content: center;
+  display: flex;
 }
 
 .buttons button {
-  background-color: beige;
-  border: solid 1px bisque;
+  background-color: rgba(23, 23, 115, 0);
+  border: solid 1px rgb(200, 181, 223);
+  color: rgb(200, 181, 223);
   border-radius: 20px;
   margin: 10px;
   padding: 10px;
+  text-align: center;
+}
+
+.buttons button:hover {
+  cursor: pointer;
+  color: black;
+  background-color: rgba(200, 181, 223, 1);
+}
+
+.buttons #capture {
+  margin-bottom: 20vh;
 }
 
 /* GALLERY */

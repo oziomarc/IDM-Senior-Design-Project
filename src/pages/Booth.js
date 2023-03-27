@@ -199,9 +199,9 @@ function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
           <>
             <img src={img} alt="screenshot" />
             <div className="buttons">
-              <button onClick={capture}>Capture photo</button>
+              {/* <button onClick={capture}>Capture Photo</button> */}
               <Link to="/gallery" onClick={addToGallery} style={{ textDecoration: 'none' }}>
-                  <button id="" >Add to Gallery**</button>
+                  <button id="" >Add to Gallery</button>
               </Link>
               <button id="">Print</button>
               <button onClick={() => setImg(null)}>Retake</button>
