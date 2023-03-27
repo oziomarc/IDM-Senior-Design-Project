@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Bellefair&family=Caveat&family=Cinzel+Decorative&family=Cormorant+Upright:wght@300;500&family=Dosis:wght@300&family=Dynalight&family=Forum&family=IM+Fell+French+Canon:ital@1&family=Libre+Barcode+39+Text&family=Libre+Caslon+Text:ital@1&family=Metal&family=Work+Sans:wght@300&family=Yanone+Kaffeesatz&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Bellefair&family=Caveat&family=Cinzel+Decorative&family=Cormorant+Upright:wght@300;500&family=Dosis:wght@300&family=Dynalight&family=Forum&family=IM+Fell+French+Canon:ital@1&family=Libre+Barcode+39+Text&family=Libre+Caslon+Text:ital@1&family=Metal&family=Work+Sans:wght@300;500&family=Yanone+Kaffeesatz&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* SCROLL BAR */
@@ -56,17 +55,17 @@ header {
 
 header h1 {
   color: aliceblue;
-  letter-spacing: 5px;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
 }
 
-header h2 {
-  color: black;
-  width: 100%;
+header p {
+  color: aliceblue;
+  font-family: 'Work Sans', sans-serif;
 }
 
-header h1:hover, h2:hover {
-  color: rgb(168, 31, 140);
+header h1:hover, p:hover {
+  color: rgb(177,135,203);
   cursor: pointer;
 }
 
@@ -85,23 +84,53 @@ header h1:hover, h2:hover {
   flex-direction: column;
   height: 100vh;
   justify-content: center;
-  width: 100vw;
+}
+
+.define {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
 
 .heroSection h3 {
   color: rgb(232, 241, 250);
-  font-family: 'Cinzel Decorative', cursive;
-  font-size: 7rem;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 6rem;
+  font-weight: 100;
+}
+
+.heroSection h4 {
+  color: rgb(232, 241, 250);
+  font-size: 1.5rem;
+  font-weight: 150;
 }
 
 .heroSection p {
   color: rgb(232, 241, 250);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 150;
 }
 
 #about {
+  align-items: center;
+  align-self: center;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   padding: 10vh 10vw;
+}
+
+#about p {
+  color: rgb(232, 241, 250);
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 150;
+  line-height: 2rem;
+  text-align: center;
 }
 
 #author {
@@ -125,11 +154,6 @@ header h1:hover, h2:hover {
   width: 100px;
   margin: 0;
   padding: 0;
-}
-
-#about p {
-  line-height: 1.4rem;
-  margin: 2.4rem;
 }
 
 .buttonClass {
