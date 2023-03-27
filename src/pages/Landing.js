@@ -9,13 +9,13 @@ function Landing() {
       <Header />
       <div className="pageWrapper">
         <div className="heroSection">
-            <div className="define-visible">
+            <div className="define">
                 <h3>self-portrait</h3>
                 <h4>self-por·​trait</h4>
                 <h4>noun</h4>
                 <p>A self-portrait is a representation of an artist that is drawn, painted, photographed, or sculpted by that artist.</p>
             </div>
-            <div className="define-hidden">
+            <div className="define">
                 <h3>selfie</h3>
                 <h4>sel·fie</h4>
                 <h4>/ˈselfē/</h4>

@@ -79,17 +79,19 @@ function Gallery({ caption, app, capturedImage, appending, img, imageSrc }) {
       <Header />
       <div className="pageWrapper">
         <div className="galleryPage">
-            <h2>Self Portraits Throughout History</h2>
+            <h2>Historical Timeline of Self Portraits</h2>
             <div>
               {capturedImage && <img src={capturedImage}></img>}
             </div>
           {/* {images.map(image => (
             <img key={image} src={image} alt="selfie" />
           ))} */}
-        <div className="galleryWrapper">
+          <GalleryPost
+          />
+        {/* <div className="galleryWrapper">
           {gallery.map((imgSrc, index) => (
           <img key={index} src={imgSrc} alt={`img-${index}`} />
-        ))}
+        ))} */}
           {/* <div>
           {imgData.map((letter) => (
                     <LetterPost
@@ -136,7 +138,7 @@ function Gallery({ caption, app, capturedImage, appending, img, imageSrc }) {
               <img src={imageSrc}></img>
               <p>{WebcamImage.imageSrc}</p>
             </div> */}
-        </div>
+        {/* </div> */}
         </div>
       </div>
     </>

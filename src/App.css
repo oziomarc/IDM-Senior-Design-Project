@@ -1,10 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Bellefair&family=Caveat&family=Cinzel+Decorative&family=Cormorant+Upright:wght@300;500&family=Dosis:wght@300&family=Dynalight&family=Forum&family=IM+Fell+French+Canon:ital@1&family=Libre+Barcode+39+Text&family=Libre+Caslon+Text:ital@1&family=Metal&family=Work+Sans:wght@300&family=Yanone+Kaffeesatz&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* SCROLL BAR */
+
+/* width */
+/* ::-webkit-scrollbar {
+  width: 20px;
+} */
+
+/* Track */
+/* .galleryPage::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+} */
+ 
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+} */
+
 /* HEADER */
+
+header {
+  background-color: rgb(15,15,75);
+}
 
 .menu {
   align-items: center;
@@ -24,7 +54,13 @@ header {
   padding: 20px;
 }
 
-header h1, h2 {
+header h1 {
+  color: aliceblue;
+  letter-spacing: 5px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+header h2 {
   color: black;
   width: 100%;
 }
@@ -35,6 +71,8 @@ header h1:hover, h2:hover {
 }
 
 .pageWrapper {
+  background: rgb(177,135,203);
+  background: radial-gradient(circle, rgba(177,135,203,1) 0%, rgba(15,15,75,1) 69%);
   margin: 0;
   padding: 0;
 }
@@ -45,10 +83,19 @@ header h1:hover, h2:hover {
   align-items: center;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
   height: 100vh;
   justify-content: center;
   width: 100vw;
+}
+
+.heroSection h3 {
+  color: rgb(232, 241, 250);
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 7rem;
+}
+
+.heroSection p {
+  color: rgb(232, 241, 250);
 }
 
 #about {
@@ -86,7 +133,6 @@ header h1:hover, h2:hover {
 }
 
 .buttonClass {
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -155,11 +201,15 @@ button:hover {
 /* GALLERY */
 
 .galleryPage {
-  background-color: rgb(3, 3, 51);
+  background: rgb(191,157,0);
+  background: radial-gradient(circle, rgba(191,157,0,1) 0%, rgba(23,23,115,1) 87%);    
 }
 
 .galleryPage h2 {
   color: aliceblue;
+  padding: 2vmin;
+  padding-bottom: 4vmin;
+  text-align: center;
 }
 
 .galleryWrapper {
