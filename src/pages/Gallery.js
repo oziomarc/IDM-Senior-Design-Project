@@ -79,7 +79,7 @@ function Gallery({ caption, app, capturedImage, appending, img, imageSrc }) {
       <Header />
       <div className="pageWrapper">
         <div className="galleryPage">
-            <h2>Historical Timeline of Self Portraits</h2>
+            <h2>Timeline of Self Portraits</h2>
             <div>
               {capturedImage && <img src={capturedImage}></img>}
             </div>

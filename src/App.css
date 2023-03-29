@@ -44,6 +44,7 @@ header {
 }
 
 .menu p {
+  font-size: 1.3rem;
   padding: 10px;
 }
 
@@ -79,7 +80,7 @@ header h1:hover, p:hover {
 /* LANDING */
 
 .heroSection {
-  align-items: center;
+  align-self: center;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -137,10 +138,12 @@ header h1:hover, p:hover {
 #author {
   align-items: center;
   align-self: center;
+  border: 1px solid  rgba(200, 181, 223, 1);
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
-  margin: 0;
-  padding: 0;
+  margin-top: 2vmin;
+  padding: 2vmin 3vmin;
 }
 
 #author img {
@@ -151,10 +154,17 @@ header h1:hover, p:hover {
 }
 
 #author p {
-  font-size: 12px;
-  width: 100px;
-  margin: 0;
+  font-size: 0.8rem;
+  height: 150px;
+  width: 80px;
+  line-height: 1.5vmin;
+  margin: 1vmin;
   padding: 0;
+  text-align: left;
+}
+
+#author a {
+  color: rgba(200, 181, 223, 1);
 }
 
 /* .buttonClass {
@@ -242,9 +252,10 @@ img {
 
 .galleryPage h2 {
   color: aliceblue;
-  padding: 2vmin;
-  padding-bottom: 4vmin;
+  padding: 8vmin 4vmin;
   text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 2.5rem;
 }
 
 .galleryWrapper {

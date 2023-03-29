@@ -27,10 +27,10 @@ function Landing() {
             <p>The installation also aims to evoke a vintage, nostalgic feeling that is tied to the history of image capture. This is achieved through the website UI and a thermal printer that provides participants with a keepsake portrait, similar to a photo booth.</p>  
             <p>Overall, the project places the tradition of self-portraits within a larger context of human history and identity.</p>
           </div>
-          {/* <div id="author">
+          <div id="author">
             <img src={babyozi}></img>
             <p>The <a href="https://www.ozioma.xyz" target={"_blank"} >creator</a> of this website's rumored first selfie, taken on a Nintendo DSi (2011).</p>
-          </div>   */}
+          </div>  
         </div>
         <div className="buttons">
             <Link to="/booth" style={{ textDecoration: 'none' }}>
