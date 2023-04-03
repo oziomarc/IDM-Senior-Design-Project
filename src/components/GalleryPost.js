@@ -20,7 +20,7 @@ function GalleryPost () {
     const capturedImage = localStorage.getItem('capturedImage');
     // const [imageList, setImageList] = useState([])
     return (
-        <div className="galleryWrapper">
+        <div className="galleryWrapper" id="galleryWrapper">
             <div className="galleryItem">
               <img src={filler1} alt="filler-1" id="1433"></img>
             </div>

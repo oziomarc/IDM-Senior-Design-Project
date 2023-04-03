@@ -23,6 +23,7 @@ function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
   const navigate = useNavigate()
    const [webcam, setWebcam] = useState(null);
    const [active, setActive] = React.useState(true);
+   const [capturedImageUrl, setCapturedImageUrl] = useState('');
 
   useEffect(() => {
      const webcamElement = document.getElementById("webcam");
@@ -77,7 +78,7 @@ function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
         const imageRef = ref(storage, `selfies/${Date.now()}.png`, { contentType: "image/png" });
         uploadBytes(imageRef, file, { contentType: "image/png" }).then(() => {
           getDownloadURL(imageRef).then((url) => {
-            console.log(imageRef);
+            console.log(url)
           });
           // alert("image uploaded");
         });
@@ -87,12 +88,15 @@ function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
   }
 }
 
-  const addToGallery = (picture) => {
-    if (picture == null) return;
-    const imageRef = ref(storage, `selfies/help`)
-    uploadBytes(imageRef, picture).then(() => {
-      alert("image uploaded")
-    })
+  const addToGallery = (url) => {
+    navigate("/gallery")
+    // const galleryWrapper = React.document.getElementById('galleryWrapper')
+    // const galleryItem = document.createElement('div')
+    // galleryItem.classList.add('galleryItem')
+    // const galleryImage = document.createElement('img')
+    // galleryImage.src = url
+    // galleryWrapper.appe
+
   }
   
   
@@ -107,18 +111,15 @@ function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
              </FormGroup>
            </div>
            <div className="cameraCanvasWrapper">
-            <video id="webcam" autoPlay playsInline width="384" height="576"></video>
-            <canvas id="canvas" className=""></canvas>
+            <video id="webcam" className="cameraStream" autoPlay playsInline width="384" height="576"></video>
+            <canvas id="canvas" width="384" height="576" className="imageCanvas"></canvas>
             <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
           </div>
-            {/* <img src={selfie} alt="screenshot" /> */}
             <div className="buttons">
              <button id="" onClick={handleCapture}>Take photo</button>
-             <Link to="/gallery" onClick={addToGallery} style={{ textDecoration: 'none' }}>
-                 <button id="" >Add to Gallery**</button>
-                     {/* {uploadSuccessful && <p>image added!</p>}
-                     {uploadSuccessful} */}
-             </Link>
+             
+                 <button onClick={addToGallery} style={{ textDecoration: 'none' } } >Add to Gallery**</button>
+             
              <button id="">Print</button>
              <a id="photo" download="selfie.png">
              </a>
@@ -127,7 +128,7 @@ function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
         </div>
     </>
   );
-                    }
+}
 
 
 export default Booth;

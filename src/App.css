@@ -198,6 +198,7 @@ header h1:hover, p:hover {
 .cameraStream {
   height: 576px;
   margin-bottom: 5vmin;
+  object-fit: cover;
   width: 384px;
 }
 
@@ -208,6 +209,7 @@ video {
 }
 
 .imageCanvas {
+  object-fit: cover;
   height: 576px;
   width: 384px;
 }
