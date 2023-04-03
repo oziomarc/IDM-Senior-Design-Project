@@ -10,8 +10,15 @@ import filler7 from "../files/filler00007.png"
 import filler8 from "../files/filler00008.png"
 import filler9 from "../files/filler00009.png"
 import filler10 from "../files/filler00010.png"
+import imgUrl from "../pages/Booth";
+import { useState } from "react";
+// import images from './api-mock.json'
 
-function GalleryPost ({imgUrl}) {
+
+function GalleryPost () {
+    // const [capturedImage, setCapturedImage] = useState(null);
+    const capturedImage = localStorage.getItem('capturedImage');
+    // const [imageList, setImageList] = useState([])
     return (
         <div className="galleryWrapper">
             <div className="galleryItem">
@@ -45,8 +52,9 @@ function GalleryPost ({imgUrl}) {
               <img src={filler2} alt="filler-2" id="2016"></img>
             </div>
             <div className="galleryItem">
-                <img src={imgUrl} alt="newselfie"></img>
+                {/* <img src={} alt="newselfie"></img> */}
             </div>
+            {/* {imageList.map((image) => <img src={image.url} alt={image.public_id}></img>)} */}
         </div>
     );
 }

@@ -1,106 +1,133 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router";
 import Header from "../components/Header";
-// import Webcam from "webcam-easy";
+import Webcam from "webcam-easy";
 import { Switch, FormGroup, FormControlLabel } from '@mui/material';
 import { Link } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import Webcam from "react-webcam";
+// import Webcam from "react-webcam";
 import { initializeApp } from "firebase/app";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../firebase";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAbaPabQkl9fmo8yHUmCtek7KowWK1AWsU",
-  authDomain: "photobooth-7ee4c.firebaseapp.com",
-  projectId: "photobooth-7ee4c",
-  storageBucket: "photobooth-7ee4c.appspot.com",
-  messagingSenderId: "343204330461",
-  appId: "1:343204330461:web:398d0e337c44bec2cf9434"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAbaPabQkl9fmo8yHUmCtek7KowWK1AWsU",
+//   authDomain: "photobooth-7ee4c.firebaseapp.com",
+//   projectId: "photobooth-7ee4c",
+//   storageBucket: "photobooth-7ee4c.appspot.com",
+//   messagingSenderId: "343204330461",
+//   appId: "1:343204330461:web:398d0e337c44bec2cf9434"
+// };
 
 function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
-  const [showWebcam, setShowWebcam] = useState(false);
-  const [appInitialized, setAppInitialized] = useState();
   const navigate = useNavigate()
-  const [webcam, setWebcam] = useState(null);
-  const [active, setActive] = React.useState(true);
+   const [webcam, setWebcam] = useState(null);
+   const [active, setActive] = React.useState(true);
 
   useEffect(() => {
-    const app = initializeApp(firebaseConfig);
-    setAppInitialized(true)
-  },[]) 
+     const webcamElement = document.getElementById("webcam");
+     const canvasElement = document.getElementById("canvas");
+     const snapSoundElement = document.getElementById("snapSound");
 
-  const [img, setImg] = useState(null);
-    const webcamRef = useRef(null);
-  
-    const videoConstraints = {
-      width: 384,
-      height: 576,
-      facingMode: "user",
+     const webcamInstance = new Webcam(
+       webcamElement,
+       "user",
+       canvasElement,
+       snapSoundElement
+     );
+
+     setWebcam(webcamInstance);
+
+     return () => {
+       webcamInstance.stop();
+     };
+   }, []);
+
+   const handlePermission = () => {
+    setActive(!active)
+    if (webcam && active) {
+      webcam
+        .start()
+        .then(() => {
+          console.log("webcam started");
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        }
+    else {
+        webcam.stop()
+    }
+  };
+  const handleCapture = () => {
+    if (webcam) {
+      const picture = webcam.snap();
+      if (picture == null) return;
+      // convert base64 to png
+      const imageData = picture.split(",")[1];
+      const image = new Image();
+      image.onload = function() {
+      const canvas = document.createElement("canvas");
+      canvas.width = image.width;
+      canvas.height = image.height;
+      const context = canvas.getContext("2d");
+      context.drawImage(image, 0, 0);
+      canvas.toBlob((blob) => {
+        const file = new File([blob], "filename.png", { type: "image/png" });
+        const imageRef = ref(storage, `selfies/${Date.now()}.png`, { contentType: "image/png" });
+        uploadBytes(imageRef, file, { contentType: "image/png" }).then(() => {
+          getDownloadURL(imageRef).then((url) => {
+            console.log(imageRef);
+          });
+          // alert("image uploaded");
+        });
+      }, "image/png");
     };
-  
-    const capture = useCallback((e) => {
-      const imageSrc = webcamRef.current.getScreenshot();
-      setImg(imageSrc);
-    }, []);
-
-    const handlePermission = useCallback(() => {
-      setShowWebcam(!showWebcam);
-    }, [showWebcam]);
+    image.src = "data:image/png;base64," + imageData;
+  }
+}
 
   const addToGallery = (picture) => {
-    const appending = React.createElement('img');
-    appending.src = picture.url();
+    if (picture == null) return;
+    const imageRef = ref(storage, `selfies/help`)
+    uploadBytes(imageRef, picture).then(() => {
+      alert("image uploaded")
+    })
   }
-
+  
+  
   return (
     <>
       <Header />
-      <div className="pageWrapper">
-        <div className="boothWrapper">
-
-      <div className="Container">
-        <div className="permissionButton">
-          <FormGroup>
-              <FormControlLabel control={<Switch false />} onClick={handlePermission} label="Camera Access" />
-          </FormGroup>
-        </div>
-        {showWebcam && (
-          <div className="imageCanvas">
-            <Webcam
-              audio={false}
-              mirrored={true}
-              height={576}
-              width={384}
-              ref={webcamRef}
-              screenshotFormat="image/png"
-              videoConstraints={videoConstraints}
-              />
-          </div>    
-          
-          )}
-        {img === null ? (
-          <div className="buttons">
-            <button onClick={capture}>Capture photo</button>
+       <div className="pageWrapper">
+         <div className="boothWrapper">
+           <div className="permissionButton">
+             <FormGroup>
+                 <FormControlLabel control={<Switch default />} onClick={handlePermission} label="Camera Access" />
+             </FormGroup>
+           </div>
+           <div className="cameraCanvasWrapper">
+            <video id="webcam" autoPlay playsInline width="384" height="576"></video>
+            <canvas id="canvas" className=""></canvas>
+            <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
           </div>
-        ) : (
-          <>
-            <img src={img} alt="screenshot" />
+            {/* <img src={selfie} alt="screenshot" /> */}
             <div className="buttons">
-              {/* <button onClick={capture}>Capture Photo</button> */}
-              <Link to="/gallery" onClick={addToGallery} style={{ textDecoration: 'none' }}>
-                  <button id="" >Add to Gallery</button>
-              </Link>
-              <button id="">Print</button>
-              <button onClick={() => setImg(null)}>Retake</button>
-            </div>
-          </>
-        )}
+             <button id="" onClick={handleCapture}>Take photo</button>
+             <Link to="/gallery" onClick={addToGallery} style={{ textDecoration: 'none' }}>
+                 <button id="" >Add to Gallery**</button>
+                     {/* {uploadSuccessful && <p>image added!</p>}
+                     {uploadSuccessful} */}
+             </Link>
+             <button id="">Print</button>
+             <a id="photo" download="selfie.png">
+             </a>
+          </div>
       </div>
         </div>
-      </div>
     </>
   );
-}
+                    }
+
 
 export default Booth;

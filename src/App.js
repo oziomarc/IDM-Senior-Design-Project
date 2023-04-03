@@ -53,6 +53,7 @@ function App() {
     {
       path: "/gallery",
       element: <Gallery 
+      capturedImage={capturedImage}
       app={appInitialized}
       />
       

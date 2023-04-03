@@ -7,6 +7,7 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 import Booth from "./Booth";
 import appending from "./Booth";
 import picture from "./Booth";
+import selfie from "./Booth";
 import GalleryPost from "../components/GalleryPost";
 import filler1 from "../files/filler00001.png"
 import filler2 from "../files/filler00002.png"
@@ -87,6 +88,7 @@ function Gallery({ caption, app, capturedImage, appending, img, imageSrc }) {
             <img key={image} src={image} alt="selfie" />
           ))} */}
           <GalleryPost
+            selfie={selfie}
           />
         {/* <div className="galleryWrapper">
           {gallery.map((imgSrc, index) => (
