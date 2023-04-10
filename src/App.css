@@ -191,9 +191,9 @@ header h1:hover, p:hover {
   flex-direction: row;
 }
 
-.cameraCanvasWrapper * {
+/* .cameraCanvasWrapper * {
   margin: 2vmin;
-}
+} */
 
 .cameraStream {
   height: 576px;
@@ -223,6 +223,7 @@ img {
 .buttons {
   justify-content: center;
   display: flex;
+  padding-bottom: 20vh;
 }
 
 .buttons button {
@@ -246,6 +247,24 @@ img {
 }
 
 /* GALLERY */
+
+.boothWrapper {
+  background-color: #CFC4B4;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+.boothWrapper-2 {
+  background-color: #E4DBCF;
+  height: 645px;
+  margin: 0;
+  width: 1217px;
+}
+
+.boothWrapper-3 {
+  background-color: #F6DCC3;
+}
 
 .galleryPage {
   background: rgb(191,157,0);

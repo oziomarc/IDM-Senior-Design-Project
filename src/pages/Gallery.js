@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 import Header from "../components/Header";
-import { getFirestore, collection, getDocs, onSnapshot } from "firebase/firestore"
-import { initializeApp } from "firebase/app";
-import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
-import Booth from "./Booth";
-import appending from "./Booth";
-import picture from "./Booth";
-import selfie from "./Booth";
-import GalleryPost from "../components/GalleryPost";
+import { ref, listAll, getDownloadURL } from "firebase/storage";
 import filler1 from "../files/filler00001.png"
 import filler2 from "../files/filler00002.png"
 import filler3 from "../files/filler00003.png"
@@ -24,15 +16,18 @@ import { storage } from "../firebase";
 function Gallery({  }) {
   const [imageList, setImageList] = useState([])
   const storageRef = ref(storage, `selfies/`)
+
   useEffect(() => {
     listAll(storageRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
-          setImageList((prev) => [...prev, url])
+          setImageList((prev) => [...prev, url].sort())
+
         })
       })
     })
   }, [])
+
 
   return (
     <>

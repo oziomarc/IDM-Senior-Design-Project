@@ -1,29 +1,15 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Header from "../components/Header";
 import Webcam from "webcam-easy";
 import { Switch, FormGroup, FormControlLabel } from '@mui/material';
-import { Link } from "react-router-dom";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-// import Webcam from "react-webcam";
-import { initializeApp } from "firebase/app";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAbaPabQkl9fmo8yHUmCtek7KowWK1AWsU",
-//   authDomain: "photobooth-7ee4c.firebaseapp.com",
-//   projectId: "photobooth-7ee4c",
-//   storageBucket: "photobooth-7ee4c.appspot.com",
-//   messagingSenderId: "343204330461",
-//   appId: "1:343204330461:web:398d0e337c44bec2cf9434"
-// };
-
-function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
+function Booth() {
   const navigate = useNavigate()
    const [webcam, setWebcam] = useState(null);
    const [active, setActive] = React.useState(true);
-   const [capturedImageUrl, setCapturedImageUrl] = useState('');
 
   useEffect(() => {
      const webcamElement = document.getElementById("webcam");
@@ -60,6 +46,7 @@ function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
         webcam.stop()
     }
   };
+
   const handleCapture = () => {
     if (webcam) {
       const picture = webcam.snap();
@@ -78,9 +65,10 @@ function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
         const imageRef = ref(storage, `selfies/${Date.now()}.png`, { contentType: "image/png" });
         uploadBytes(imageRef, file, { contentType: "image/png" }).then(() => {
           getDownloadURL(imageRef).then((url) => {
-            console.log(url)
+            console.log("image ref: "+imageRef)
+            console.log("file: "+file)
+            console.log("url: "+url)
           });
-          // alert("image uploaded");
         });
       }, "image/png");
     };
@@ -88,43 +76,35 @@ function Booth({ app, setCapturedImage, capturedImage, imgUrl }) {
   }
 }
 
-  const addToGallery = (url) => {
+  const addToGallery = () => {
     navigate("/gallery")
-    // const galleryWrapper = React.document.getElementById('galleryWrapper')
-    // const galleryItem = document.createElement('div')
-    // galleryItem.classList.add('galleryItem')
-    // const galleryImage = document.createElement('img')
-    // galleryImage.src = url
-    // galleryWrapper.appe
-
   }
   
-  
+  const printImage = () => {
+    const printedImage = new Image();
+
+  }
   return (
     <>
       <Header />
-       <div className="pageWrapper">
-         <div className="boothWrapper">
-           <div className="permissionButton">
-             <FormGroup>
-                 <FormControlLabel control={<Switch default />} onClick={handlePermission} label="Camera Access" />
-             </FormGroup>
-           </div>
-           <div className="cameraCanvasWrapper">
-            <video id="webcam" className="cameraStream" autoPlay playsInline width="384" height="576"></video>
-            <canvas id="canvas" width="384" height="576" className="imageCanvas"></canvas>
-            <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
-          </div>
+          <div className="boothWrapper">
+            <div className="boothWrapper-2">
+              <div className="permissionButton">
+                <FormGroup>
+                    <FormControlLabel control={<Switch default />} onClick={handlePermission} label="Camera Access" />
+                </FormGroup>
+              </div>
+              <div className="cameraCanvasWrapper">
+                <video id="webcam" className="cameraStream" autoPlay playsInline width="384" height="576"></video>
+                <canvas id="canvas" width="384" height="576" className="imageCanvas"></canvas>
+              </div>
+            
             <div className="buttons">
              <button id="" onClick={handleCapture}>Take photo</button>
-             
-                 <button onClick={addToGallery} style={{ textDecoration: 'none' } } >Add to Gallery**</button>
-             
-             <button id="">Print</button>
-             <a id="photo" download="selfie.png">
-             </a>
+             <button onClick={addToGallery} style={{ textDecoration: 'none' } }>Add to Gallery</button>
+             <button id="print-button" onClick={printImage}>Print</button>
+            </div>
           </div>
-      </div>
         </div>
     </>
   );
