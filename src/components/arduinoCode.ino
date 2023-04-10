@@ -30,14 +30,7 @@ void setup() {
 
   printer.setLineHeight(); // Reset to default
 
-  // Barcode examples:
-  // CODE39 is the most common alphanumeric barcode:
-  printer.printBarcode("ADAFRUT", CODE39);
-  printer.setBarcodeHeight(100);
-  // Print UPC line on product barcodes:
-  printer.printBarcode("123456789123", UPC_A);
-
-  // Print the bitmap:
+  // Print the bitmap image:
   printer.printBitmap(lastimage_width, lastimage_height, lastimage_data);
   printer.println("FontA (caption goes here)");
   printer.feed(2);

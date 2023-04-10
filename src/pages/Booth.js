@@ -82,6 +82,12 @@ function Booth() {
   
   const printImage = () => {
     const printedImage = new Image();
+    // get the image url that was just captured
+    // download the image to headerImages folder in src
+    // run the image conversion processing code
+    // save the header file to the folder
+    // import header file to arduino code and then run it to print
+    // ???
 
   }
   return (
