@@ -1,9 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Bellefair&family=Caveat&family=Cinzel+Decorative&family=Cormorant+Upright:wght@300;500&family=Dosis:wght@300&family=Dynalight&family=Forum&family=IM+Fell+French+Canon:ital@1&family=Libre+Barcode+39+Text&family=Libre+Caslon+Text:ital@1&family=Metal&family=Work+Sans:wght@300;500&family=Yanone+Kaffeesatz&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap&family=Aboreto&family=Bellefair&family=Caveat&family=Cinzel+Decorative&family=Cormorant+Upright:wght@300;500&family=Dosis:wght@300&family=Dynalight&family=Forum&family=IM+Fell+French+Canon:ital@1&family=Libre+Barcode+39+Text&family=Libre+Caslon+Text:ital@1&family=Metal&family=Work+Sans:wght@300;500&family=Yanone+Kaffeesatz&display=swap&family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap');
 
 * {
   margin: 0;
   padding: 0;
 }
+
+/* html, body {
+  height: 100%;
+  width: 100%;
+} */
 
 /* SCROLL BAR */
 
@@ -91,6 +96,10 @@ header h1:hover, p:hover {
   display: flex;
   flex-direction: column;
   align-self: center;
+  width: 50vw;
+}
+.define p {
+  line-height: 4vh;
 }
 
 .heroSection h3 {
@@ -182,41 +191,68 @@ header h1:hover, p:hover {
 
 .boothWrapper {
   align-items: center;
+  background-color: #CFC4B4;
+  height: 100%;
+  margin: 0;
+  padding-bottom: 30%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.cameraCanvasWrapper {
+.boothWrapper-2 {
+  background-color: #E4DBCF;
+  border: 2px solid #939085;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
+  /* height: 645px; */
+  margin-top: 7vh;
+  /* margin-bottom: 100%; */
+  padding: 3vh;
+  width: 1220px;
 }
 
-/* .cameraCanvasWrapper * {
-  margin: 2vmin;
-} */
+.cameraCanvasWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  border-radius: 25px;
+  justify-content: center;
+  margin: 10px;
+  width: 1600px;
+}
 
 .cameraStream {
-  height: 576px;
+  /* height: 576px;
   margin-bottom: 5vmin;
   object-fit: cover;
-  width: 384px;
+  width: 384px; */
 }
 
 video {
-  width: 100%;
-  height: 100%;
+  width: 384px;
+  height: 576px;
   object-fit: cover;
+}
+
+.canvas {
+  object-fit: contain;
+  height: 576px;
+  width: 384px;
+  /* object-fit: contain;
+  width: 100%;
+  height: 100%; */
 }
 
 .imageCanvas {
-  object-fit: cover;
-  height: 576px;
-  width: 384px;
+  border: 2px solid blue;
 }
 
 img {
-  width: 100%;
-  height: 100%;
+  width: 384px;
+  height: 576px;
   object-fit: cover;
 }
 
@@ -242,29 +278,99 @@ img {
   background-color: rgba(200, 181, 223, 1);
 }
 
-.buttons #capture {
-  margin-bottom: 20vh;
+.permissionButton {
+  height: 60px;
+  width: 120px;
+}
+
+.booth-buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.otherButtons {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.otherButtons button {
+  background-color: #F2E6D6;
+  border: solid 3px #C1BCA6;
+  color: #786C5B;
+  border-radius: 15px;
+  height: 60px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 120px;
+  font-size: 16px;
+}
+
+.otherButtons button:hover {
+  background-color: #F2E6D6;
+  border: solid 3px #D4CEB6;
+  box-shadow: 1px 4px 5px grey;
+  color: #786C5B;
+  cursor: pointer;
+  border-radius: 15px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.boothRow {
+  /* align-items: flex-start; */
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+  /* margin: 2vh; */
+  width: 80%;
+  justify-content: space-between;
+}
+
+.boothRow-1 {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+.boothRow-2 {
+  justify-self: end;
+  align-items: flex-end;
+  /* align-content: flex-end; */
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+}
+#b-1 {
+  background-color: #25241f;
+  height: 15px;
+  margin: 2px;
+  width: 402px;
+}
+#b-2 {
+  background-color: #25241f;
+  height: 18px;
+  margin: 2px;
+  width: 180px;
+}
+
+.countdowns {
+  text-align: center;
+}
+
+#countdownElement {
+  border: 1px solid red;
+  color: white;
+  text-align: center;
 }
 
 /* GALLERY */
-
-.boothWrapper {
-  background-color: #CFC4B4;
-  height: 100%;
-  margin: 0;
-  width: 100%;
-}
-
-.boothWrapper-2 {
-  background-color: #E4DBCF;
-  height: 645px;
-  margin: 0;
-  width: 1217px;
-}
-
-.boothWrapper-3 {
-  background-color: #F6DCC3;
-}
 
 .galleryPage {
   background: rgb(191,157,0);
@@ -291,15 +397,31 @@ img {
 
 .galleryItem {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-color: rgb(249, 247, 239);
   border: 0.5px solid #e4e4e4;
   height: 514px;
   width: 380px;
 }
-
 .galleryItem img {
   height: 410px;
   margin-top: 20px;
   width: 332px;
+}
+.galleryCaption {
+  color: black;
+  text-align: left;
+  font-size: 26px;
+  /* font-family: 'Caveat', cursive; */
+  font-family: 'Edu NSW ACT Foundation', cursive;
+  /* font-family: 'Gaegu', cursive; */
+  /* font-family: 'Loved by the King', cursive; */
+  /* font-family: 'Mansalva', cursive; */
+  font-weight: 350;
+  padding-top: 1vh;
+  width: 75%;
+}
+.galleryCaption p {
+
 }
