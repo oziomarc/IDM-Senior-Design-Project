@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap&family=Aboreto&family=Bellefair&family=Caveat&family=Cinzel+Decorative&family=Cormorant+Upright:wght@300;500&family=Dosis:wght@300&family=Dynalight&family=Forum&family=IM+Fell+French+Canon:ital@1&family=Libre+Barcode+39+Text&family=Libre+Caslon+Text:ital@1&family=Metal&family=Work+Sans:wght@300;500&family=Yanone+Kaffeesatz&display=swap&family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap&family=Aboreto&family=Bellefair&family=Caveat&family=Cinzel+Decorative&family=Cormorant+Upright:wght@300;500&family=Dosis:wght@300&family=Dynalight&family=Forum&family=IM+Fell+French+Canon:ital@1&family=Libre+Barcode+39+Text&family=Libre+Caslon+Text:ital@1&family=Metal&family=Work+Sans:wght@300;500&family=Yanone+Kaffeesatz&display=swap&family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap&family=Caveat&family=Cormorant+Garamond');
 
 * {
   margin: 0;
@@ -300,14 +300,16 @@ img {
 .otherButtons button {
   background-color: #F2E6D6;
   border: solid 3px #C1BCA6;
-  color: #786C5B;
+  color: #433c33;
   border-radius: 15px;
   height: 60px;
   margin: 10px;
   padding: 10px;
   text-align: center;
   width: 120px;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 16px;
+  font-weight: 600;
 }
 
 .otherButtons button:hover {
@@ -323,18 +325,25 @@ img {
 }
 
 .boothRow {
-  /* align-items: flex-start; */
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-evenly; */
-  /* margin: 2vh; */
-  width: 80%;
+  margin-top: 2vh;
+  width: 81%;
   justify-content: space-between;
 }
-
+.boothRow img {
+  background-color: #e2d3be;
+  border: 2px solid #c3b8a7;
+  border-radius: 5px;
+  height: auto;
+  padding: 4px;
+  width: 40px;
+}
+.boothRow img:hover {
+  background-color: #c3b8a7;
+  cursor: pointer;
+}
 .boothRow-1 {
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   align-self: flex-start;
@@ -342,8 +351,6 @@ img {
 .boothRow-2 {
   justify-self: end;
   align-items: flex-end;
-  /* align-content: flex-end; */
-  border: 1px solid green;
   display: flex;
   flex-direction: column;
 }
@@ -354,19 +361,28 @@ img {
   width: 402px;
 }
 #b-2 {
-  background-color: #25241f;
-  height: 18px;
+  background-color: #171a16;
+  height: 16px;
   margin: 2px;
-  width: 180px;
+  width: 150px;
+}
+.stickers {
+
 }
 
 .countdowns {
-  text-align: center;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  width: 70%;
 }
 
 #countdownElement {
-  border: 1px solid red;
   color: white;
+  font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 6rem;
   text-align: center;
 }
 
@@ -384,17 +400,14 @@ img {
   font-family: 'Work Sans', sans-serif;
   font-size: 2.5rem;
 }
-
 .galleryWrapper {
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
 }
-
 .galleryWrapper > div {
   margin: 4vmin;
 }
-
 .galleryItem {
   display: flex;
   flex-direction: column;

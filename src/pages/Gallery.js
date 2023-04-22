@@ -15,12 +15,14 @@ import filler11 from "../files/filler00011.jpg"
 import filler12 from "../files/filler00012.png"
 import filler13 from "../files/filler00013.png"
 import { storage } from "../firebase";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
-function Gallery({  }) {
+function Gallery({ app, captionText }) {
   const [imageList, setImageList] = useState([])
   const [captionList, setCaptionList] = useState([])
+  const [captionData, setCaptionData] = useState([])
   const storageRef = ref(storage, `selfies/`)
+  const captionsRef = ref(storage, "captions/")
   // const docRef = addDoc(collection, `selfieCaptions`)
 
   useEffect(() => {
@@ -28,11 +30,37 @@ function Gallery({  }) {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
           setImageList((prev) => [...prev, url].sort())
-
         })
       })
     })
   }, [])
+
+  useEffect(() => {
+    listAll(captionsRef).then((response) => {
+      response.items.forEach((item) => {
+        captionData.map((caption) => (
+          caption.captionData
+        ))
+      })
+    })
+  }, [])
+
+  const queryData = async (app) => {
+    if(!app) return [];
+    const db = getFirestore(app); 
+    const querySnapshot = await getDocs(collection(db, "captions"))
+    const data = []
+    querySnapshot.forEach((doc) => {
+        const pushData = doc.data()
+        data.push(pushData)
+    });
+    return data;
+  }
+
+  useEffect(() => {
+    if(!app) return;
+    queryData(app).then(setCaptionData)
+  }, [app])
 
 
   return (
@@ -86,10 +114,10 @@ function Gallery({  }) {
                 <img src={filler10} alt="filler-10" id="2014"></img>
                 <p className="galleryCaption">self portrait c. 2014</p>
               </div>
-              <div className="galleryItem">
+              {/* <div className="galleryItem">
                 <img src={filler13} alt="filler-13" id="2015"></img>
                 <p className="galleryCaption">Curiosity rover's self portrait at Mount Sharp, Mars, 2015</p>
-              </div>
+              </div> */}
               <div className="galleryItem">
                 <img src={filler2} alt="filler-2" id="2016"></img>
                 <p className="galleryCaption">self portrait c. 2016</p>
@@ -97,7 +125,9 @@ function Gallery({  }) {
               {imageList.map((url) => {
                 return <div className="galleryItem">
                   <img src={url}></img>
-                  <p className="galleryCaption"></p>
+                  {captionData.map((caption) => {
+                    <p className="galleryCaption">{caption.captionText}</p>
+                  })}
                   </div>
               })}
           </div>

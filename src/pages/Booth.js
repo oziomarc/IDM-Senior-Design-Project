@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router";
 import Webcam from "webcam-easy";
-import { Switch, FormGroup, FormControlLabel } from '@mui/material';
+import { Switch, FormGroup, FormControlLabel, createTheme } from '@mui/material';
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
 import { Link } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
+import AddCaptionForm from "./AddCaptionForm";
+import applelogo from "../files/apple-logo.png";
 
 function Booth(app) {
   const navigate = useNavigate()
@@ -86,7 +88,7 @@ function Booth(app) {
       <>
           <form className="captionForm" onSubmit={(e) => sendCaption(e)}>
               <label htmlFor="captionText" style={{fontSize: 24}}>Caption your photo.</label>
-              <textarea type="text" id="galleryCaption" name="captionText" maxlength="140"></textarea>
+              <textarea type="text" id="galleryCaption" name="captionText" maxlength="55"></textarea>
               <button type="submit">done</button>
           </form>
       </>
@@ -98,8 +100,8 @@ function Booth(app) {
     const db = getFirestore(app);
     const captionText = e.currentTarget.captionText.value;
     try {
-        const docRef = await addDoc(collection(db, `selfieCaptions/`), {
-            captionText
+        const docRef = await addDoc(collection(db, "captions"), {
+            captionText,
         });
         // setPostSuccessful(true)
     } catch (e) {
@@ -143,23 +145,31 @@ function Booth(app) {
                 <div className="otherButtons">
                   <button id="" onClick={handleCapture}>Take Photo</button>
                   <button onClick={addToGallery} style={{ textDecoration: 'none' } }>Add to Gallery</button>
-                  <button onClick={addCaption} style={{ textDecoration: 'none' } }>Caption</button>
+                  <button onClick={addCaption} style={{ textDecoration: 'none' } }>Add Caption</button>
                   <button id="print-button" onClick={printImage}>Print</button>
                 </div>
               </div>
 
           </div>
+          {/* <div className="addCaptionWrapper">
+            <AddCaptionForm 
+              sendCaption={sendCaption}
+            />
+          </div> */}
           <div className="boothRow">
             <div className="boothRow-1">
-              <button><Link to="/"> C.H.</Link></button>
+              <Link to="/"><img src={applelogo} alt="logo"/></Link>
             </div>
             <div className="boothRow-2">
               <div id="b-1"></div>
               <div id="b-2"></div>
             </div>
-            <div className="boothRow-3" id="beepyFlash">
+            {/* <div className="boothRow-3" id="beepyFlash">
               <div id="b-3"></div>
-            </div>
+            </div> */}
+          </div>
+          <div className="stickers">
+
           </div>
           
         </div>
