@@ -8,6 +8,10 @@ import { Link } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import AddCaptionForm from "./AddCaptionForm";
 import applelogo from "../files/apple-logo.png";
+import sticker1 from "../files/sticker-1.png";
+import sticker4 from "../files/sticker-4.png";
+import sticker2 from "../files/sticker-2.png";
+import sticker3 from "../files/sticker-3.png";
 
 function Booth(app) {
   const navigate = useNavigate()
@@ -56,13 +60,10 @@ function Booth(app) {
           // convert base64 to png
           const imageData = picture.split(",")[1];
           const image = new Image();
+          image.src = "data:image/png;base64," + imageData;
+          
           image.onload = function() {
-            const canvas = document.createElement("canvas");
-            canvas.width = 384;
-            canvas.height = 576;
-            canvas.className = "imageCanvas"
-            const context = canvas.getContext("2d");
-            context.drawImage(image, 0, 0);
+            const canvas = document.getElementById("canvas");
             canvas.toBlob((blob) => {
               const file = new File([blob], "filename.png", { type: "image/png" });
               const imageRef = ref(storage, `selfies/${Date.now()}.png`, { contentType: "image/png" });
@@ -75,7 +76,6 @@ function Booth(app) {
               });
             }, "image/png");
           };
-          image.src = "data:image/png;base64," + imageData;
         } else {
           countdownElement.innerHTML = countdown;
         }
@@ -86,10 +86,10 @@ function Booth(app) {
   const addCaption = () => {
     return (
       <>
-          <form className="captionForm" onSubmit={(e) => sendCaption(e)}>
+          <form className="captionForm">
               <label htmlFor="captionText" style={{fontSize: 24}}>Caption your photo.</label>
               <textarea type="text" id="galleryCaption" name="captionText" maxlength="55"></textarea>
-              <button type="submit">done</button>
+              <button type="submit"onClick={(e)=>sendCaption(e)}>done</button>
           </form>
       </>
     )
@@ -126,12 +126,10 @@ function Booth(app) {
   return (
     <>
           <div className="boothWrapper">
-            <div className="boothWrapper-2">
-              
+            <div className="boothWrapper-2"> 
               <div className="cameraCanvasWrapper">
-                
-                <video id="webcam" className="cameraStream" autoPlay playsInline width="384" height="576"></video>
-                <canvas id="canvas" width="384" height="576" className=""></canvas>
+                <video id="webcam" className="cameraStream" autoPlay playsInline ></video>
+                <canvas id="canvas" width="384" height="576" className="canvas"></canvas>
               </div>
                <div className="countdowns">
                   <h1 id="countdownElement"></h1>
@@ -151,11 +149,11 @@ function Booth(app) {
               </div>
 
           </div>
-          {/* <div className="addCaptionWrapper">
+          <div className="addCaptionWrapper">
             <AddCaptionForm 
               sendCaption={sendCaption}
             />
-          </div> */}
+          </div>
           <div className="boothRow">
             <div className="boothRow-1">
               <Link to="/"><img src={applelogo} alt="logo"/></Link>
@@ -168,9 +166,14 @@ function Booth(app) {
               <div id="b-3"></div>
             </div> */}
           </div>
-          <div className="stickers">
-
+          {/* <div className="stickers-2">
+            <img src={sticker1} alt="stciker"/>
+            <img src={sticker2} alt="stciker"/>
           </div>
+          <div className="stickers">
+            <img src={sticker3} alt="stciker"/>
+            <img src={sticker4} alt="stciker"/>
+          </div> */}
           
         </div>
     </>

@@ -128,8 +128,12 @@ header h1:hover, p:hover {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  padding: 10vh 10vw 20vh;
+  padding: 8vh 30vw 70vh 30vw;
 }
+
+/* #about p:last-child {
+  margin-bottom: 50vh;
+} */
 
 #about p {
   color: rgb(232, 241, 250);
@@ -139,7 +143,7 @@ header h1:hover, p:hover {
   font-family: 'Work Sans', sans-serif;
   font-size: 1.4rem;
   font-weight: 150;
-  line-height: 2rem;
+  line-height: 2.5rem;
   padding: 2vmin;
   text-align: center;
 }
@@ -232,30 +236,40 @@ header h1:hover, p:hover {
 }
 
 video {
+  border: 1px solid blue;
   width: 384px;
   height: 576px;
   object-fit: cover;
+  margin-right: 5px;
 }
 
-.canvas {
-  object-fit: contain;
+#canvas {
+  border: 1px solid yellowgreen;
+  object-fit: cover;
   height: 576px;
   width: 384px;
   /* object-fit: contain;
   width: 100%;
   height: 100%; */
 }
+.canvasContext {
+  transform: scaleX(2);
+}
+/* #canvas::after{
+  border: 1px solid purple;
+  transform: scaleX(2);
+} */
+/* img {
+  border: 1px solid blue;
+  width: 884px;
+  height: 576px;
+} */
 
 .imageCanvas {
-  border: 2px solid blue;
+  border: 1px solid purple;
+  object-fit: contain;
+  /* transform: scale(-1, 1); */
 }
-
-img {
-  width: 384px;
-  height: 576px;
-  object-fit: cover;
-}
-
 .buttons {
   justify-content: center;
   display: flex;
@@ -367,6 +381,24 @@ img {
   width: 150px;
 }
 .stickers {
+  align-self: flex-end;
+  width: 90%
+}
+.stickers img {
+  height: auto;
+  width: 180px;
+
+}
+.stickers-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 40%;
+
+}
+.stickers-2 img {
+  height: auto;
+  width: 150px;
 
 }
 
