@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router";
-import Webcam from "webcam-easy";
+import Webcam from "react-webcam";
 import { Switch, FormGroup, FormControlLabel, createTheme } from '@mui/material';
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
@@ -17,16 +17,24 @@ function Booth(app) {
   const navigate = useNavigate()
   const [webcam, setWebcam] = useState(null);
   const [active, setActive] = React.useState(true);
+  const WebcamComponent = () => <Webcam />;
+  const webcamRef = React.useRef(null);
 
-  useEffect(() => {
-     const webcamElement = document.getElementById("webcam");
-     const canvasElement = document.getElementById("canvas");
-     const webcamInstance = new Webcam(webcamElement, "user", canvasElement);
-     setWebcam(webcamInstance);
-     return () => {
-       webcamInstance.stop();
-     };
-   }, []);
+  const videoConstraints = {
+    width: 384,
+    height: 576,
+    facingMode: "user",
+  };
+
+  // useEffect(() => {
+  //    const webcamElement = document.getElementById("webcam");
+  //    const canvasElement = document.getElementById("canvas");
+  //    const webcamInstance = new Webcam(webcamElement, "user", canvasElement);
+  //    setWebcam(webcamInstance);
+  //    return () => {
+  //      webcamInstance.stop();
+  //    };
+  //  }, []);
 
   const handlePermission = () => {
     setActive(!active)
@@ -45,8 +53,17 @@ function Booth(app) {
     }
   };
 
-  const handleCapture = () => {
-    if (webcam) {
+  // const WebcamCapture = () => {
+    
+  //   const capture = React.useCallback(
+  //     () => {
+  //       const imageSrc = webcamRef.current.getScreenshot();
+  //     },
+  //     [webcamRef]
+  //   );
+  // }
+  // const handleCapture = () => {
+    const capture = React.useCallback(() => {
       const countdownElement = document.getElementById("countdownElement");
       let countdown = 3;
       countdownElement.innerHTML = countdown;
@@ -55,15 +72,18 @@ function Booth(app) {
         if (countdown === 0) {
           clearInterval(countdownInterval);
           countdownElement.innerHTML = "";
-          const picture = webcam.snap();
+          const picture = webcamRef.current.getScreenshot()
           if (picture == null) return;
-          // convert base64 to png
           const imageData = picture.split(",")[1];
           const image = new Image();
           image.src = "data:image/png;base64," + imageData;
           
           image.onload = function() {
             const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = image.width;
+            canvas.height = image.height;
+            ctx.drawImage(image, 0, 0, image.width, image.height);
             canvas.toBlob((blob) => {
               const file = new File([blob], "filename.png", { type: "image/png" });
               const imageRef = ref(storage, `selfies/${Date.now()}.png`, { contentType: "image/png" });
@@ -80,8 +100,7 @@ function Booth(app) {
           countdownElement.innerHTML = countdown;
         }
       }, 1000);
-    }
-  }
+    }, [webcamRef]);
 
   const addCaption = () => {
     return (
@@ -128,7 +147,14 @@ function Booth(app) {
           <div className="boothWrapper">
             <div className="boothWrapper-2"> 
               <div className="cameraCanvasWrapper">
-                <video id="webcam" className="cameraStream" autoPlay playsInline ></video>
+              <div id="webcam" className="cameraStream" autoPlay playsInline ><Webcam
+                audio={false}
+                ref={webcamRef}
+                mirrored={true}
+                screenshotFormat="image/png"
+                videoConstraints={videoConstraints}
+              /></div>
+              
                 <canvas id="canvas" width="384" height="576" className="canvas"></canvas>
               </div>
                <div className="countdowns">
@@ -141,7 +167,7 @@ function Booth(app) {
                     </FormGroup>
                 </div>
                 <div className="otherButtons">
-                  <button id="" onClick={handleCapture}>Take Photo</button>
+                  <button id="" onClick={capture}>Take Photo</button>
                   <button onClick={addToGallery} style={{ textDecoration: 'none' } }>Add to Gallery</button>
                   <button onClick={addCaption} style={{ textDecoration: 'none' } }>Add Caption</button>
                   <button id="print-button" onClick={printImage}>Print</button>

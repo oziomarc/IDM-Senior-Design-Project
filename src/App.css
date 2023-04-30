@@ -218,6 +218,7 @@ header h1:hover, p:hover {
 }
 
 .cameraCanvasWrapper {
+  border: 3px solid green;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -237,33 +238,27 @@ header h1:hover, p:hover {
 
 video {
   border: 1px solid blue;
-  width: 384px;
-  height: 576px;
+  /* width: 384px;
+  height: 576px; */
   object-fit: cover;
   margin-right: 5px;
 }
 
 #canvas {
-  border: 1px solid yellowgreen;
+  border: 2px solid red;
+  object-fit: cover;
+  /* transform: scaleX(2); */
+  /* border: 1px solid yellowgreen;
   object-fit: cover;
   height: 576px;
-  width: 384px;
+  width: 384px; */
   /* object-fit: contain;
   width: 100%;
   height: 100%; */
 }
 .canvasContext {
-  transform: scaleX(2);
+  /* transform: scaleX(2); */
 }
-/* #canvas::after{
-  border: 1px solid purple;
-  transform: scaleX(2);
-} */
-/* img {
-  border: 1px solid blue;
-  width: 884px;
-  height: 576px;
-} */
 
 .imageCanvas {
   border: 1px solid purple;

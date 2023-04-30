@@ -29,7 +29,7 @@ function Gallery({ app, captionText }) {
     listAll(storageRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
-          setImageList((prev) => [...prev, url].sort())
+          setImageList((prev) => [...prev, url].sort().reverse())
         })
       })
     })
