@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router";
 import Webcam from "react-webcam";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Switch, FormGroup, FormControlLabel, createTheme } from '@mui/material';
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
@@ -49,24 +50,6 @@ function Booth(app) {
     console.log(captionText)
   }, [app]);
 
-  // const handlePermission = () => {
-  //   setActive(!active)
-  //   if (active) {
-  //     if (webcamRef && webcamRef.current) {
-  //       webcamRef.current
-  //         .start()
-  //         .then(() => {
-  //           console.log("webcam started");
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         })
-  //         }
-  //     else {
-  //       webcamRef.current.stop()
-  //     }
-  //   }
-  // };
 
     const capture = React.useCallback(() => {
       const countdownElement = document.getElementById("countdownElement");
@@ -195,27 +178,27 @@ function Booth(app) {
           <Header/>
           <div className="boothWrapper">
             <div className="boothWrapper-2"> 
-              <div className="cameraCanvasWrapper">
-                <div id="webcam" className="cameraStream" autoPlay playsInline ><Webcam
-                  audio={false}
-                  ref={webcamRef}
-                  mirrored={true}
-                  screenshotFormat="image/png"
-                  screenshotQuality={1}
-                  videoConstraints={videoConstraints}
-                  imageSmoothing={false}
-                /></div>
+            <div className="titleWrapper">
+              <h2><i>Photo Booth</i></h2>
+              
+            
+            <div className="view-and-controlsWrapper">
+                <div className="cameraCanvasWrapper">
+                  <div id="webcam" className="cameraStream" autoPlay playsInline ><Webcam
+                    audio={false}
+                    ref={webcamRef}
+                    mirrored={true}
+                    screenshotFormat="image/png"
+                    screenshotQuality={1}
+                    videoConstraints={videoConstraints}
+                    imageSmoothing={false}
+                  /></div>
                 <canvas id="canvas" width="384" height="576" className="canvas"></canvas>
               </div>
                <div className="countdowns">
                   <h1 id="countdownElement"></h1>
                 </div>
               <div className="booth-buttons">
-                <div className="permissionButton">
-                    {/* <FormGroup>
-                        <FormControlLabel control={<Switch default color="default"/>} onClick={handlePermission} label="Camera" />
-                    </FormGroup> */}
-                </div>
                 <div className="otherButtons">
                   <button id="" onClick={capture}>Take Photo</button>
                   <button onClick={() => setShowInput(true)} style={{ textDecoration: 'none' } }>Add Caption</button>
@@ -230,6 +213,9 @@ function Booth(app) {
                   
                   <button id="print-button" onClick={printImage}>Print</button>
                 </div>
+            </div>
+            </div>
+              
               </div>
 
           </div>
@@ -238,7 +224,12 @@ function Booth(app) {
           </div>
           <div className="boothRow">
             <div className="boothRow-1">
-              <Link to="/"><img src={applelogo} alt="logo"/></Link>
+              {/* <Link to="/"><img src={applelogo} alt="back button"/></Link> */}
+              <Link to="/">
+                <div className="back-button">
+                  <KeyboardBackspaceIcon style={{ color: '#c8b5df', fontSize: 30 }}/>
+                </div>
+              </Link>
             </div>
             <div className="boothRow-2">
               <div id="b-1"></div>
