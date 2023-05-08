@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap&family=Aboreto&family=Bellefair&family=Caveat&family=Cinzel+Decorative&family=Cormorant+Upright:wght@300;500&family=Dosis:wght@300&family=Dynalight&family=Forum&family=IM+Fell+French+Canon:ital@1&family=Libre+Barcode+39+Text&family=Libre+Caslon+Text:ital@1&family=Metal&family=Work+Sans:wght@300;500&family=Yanone+Kaffeesatz&display=swap&family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap&family=Caveat&family=Cormorant+Garamond');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap&family=Aboreto&family=Bellefair&family=Caveat&family=Cinzel+Decorative&family=Cormorant+Upright:wght@300;500&family=Dosis:wght@300&family=Dynalight&family=Forum&family=IM+Fell+French+Canon:ital@1&family=Libre+Barcode+39+Text&family=Libre+Caslon+Text:ital@1&family=Metal&family=Work+Sans:wght@300;500&family=Yanone+Kaffeesatz&display=swap&family=Bad+Script&family=Caveat&family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation&family=Gaegu:wght@300&family=Just+Me+Again+Down+Here&family=Loved+by+the+King&family=Mansalva&family=Sue+Ellen+Francisco&display=swap&family=Caveat&family=Cormorant+Garamond&family=Share+Tech+Mono');
 
 * {
   margin: 0;
@@ -101,7 +101,9 @@ header h1:hover, p:hover {
 .define p {
   line-height: 4vh;
 }
-
+p + h3 {
+  margin-top: 13vh;
+}
 .heroSection h3 {
   color: rgb(232, 241, 250);
   font-family: 'Cormorant Upright', serif;
@@ -128,7 +130,7 @@ header h1:hover, p:hover {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  padding: 8vh 30vw 70vh 30vw;
+  padding: 8vh 30vw 0vh 30vw;
 }
 
 /* #about p:last-child {
@@ -148,6 +150,7 @@ header h1:hover, p:hover {
   text-align: center;
 }
 
+
 #author {
   align-items: center;
   align-self: center;
@@ -155,7 +158,8 @@ header h1:hover, p:hover {
   border-radius: 20px;
   display: flex;
   flex-direction: row;
-  margin-top: 2vmin;
+  margin-bottom: 20vh;
+  margin-top: 20vh;
   padding: 2vmin 3vmin;
 }
 
@@ -193,9 +197,23 @@ header h1:hover, p:hover {
 
 /* BOOTH */
 
+textarea {
+  border: 1px solid pink;
+  border-radius: 5px;
+  height: 50px;
+  margin: 0 0 0 10px;
+  padding: 7px;
+  width: 115px;
+  resize: none;
+  font-family: 'Edu NSW ACT Foundation', cursive;
+  font-size: 15px;
+}
+
 .boothWrapper {
   align-items: center;
-  background-color: #CFC4B4;
+  background: radial-gradient(circle, rgba(177,135,203,1) 0%, rgba(15,15,75,1) 69%);
+  margin: 0;
+  padding: 0;
   height: 100%;
   margin: 0;
   padding-bottom: 30%;
@@ -205,20 +223,16 @@ header h1:hover, p:hover {
 }
 
 .boothWrapper-2 {
-  background-color: #E4DBCF;
-  border: 2px solid #939085;
+  border: 2px solid rgb(177,135,203);
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  /* height: 645px; */
   margin-top: 7vh;
-  /* margin-bottom: 100%; */
   padding: 3vh;
   width: 1220px;
 }
 
 .cameraCanvasWrapper {
-  border: 3px solid green;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -229,55 +243,31 @@ header h1:hover, p:hover {
   width: 1600px;
 }
 
-.cameraStream {
-  /* height: 576px;
-  margin-bottom: 5vmin;
-  object-fit: cover;
-  width: 384px; */
-}
-
 video {
-  border: 1px solid blue;
-  /* width: 384px;
-  height: 576px; */
   object-fit: cover;
   margin-right: 5px;
 }
 
 #canvas {
-  border: 2px solid red;
   object-fit: cover;
-  /* transform: scaleX(2); */
-  /* border: 1px solid yellowgreen;
-  object-fit: cover;
-  height: 576px;
-  width: 384px; */
-  /* object-fit: contain;
-  width: 100%;
-  height: 100%; */
-}
-.canvasContext {
-  /* transform: scaleX(2); */
 }
 
-.imageCanvas {
-  border: 1px solid purple;
-  object-fit: contain;
-  /* transform: scale(-1, 1); */
-}
 .buttons {
   justify-content: center;
   display: flex;
-  padding-bottom: 20vh;
+  margin-bottom: 15vh;
+  margin-top: 12vh;
 }
 
 .buttons button {
   background-color: rgba(23, 23, 115, 0);
-  border: solid 1px rgb(200, 181, 223);
+  border: solid 2px rgb(200, 181, 223);
   color: rgb(200, 181, 223);
-  border-radius: 20px;
+  border-radius: 35px;
+  font-size: 20px;
+  font-weight: 180;
   margin: 10px;
-  padding: 10px;
+  padding: 15px;
   text-align: center;
 }
 
@@ -307,27 +297,27 @@ video {
 }
 
 .otherButtons button {
-  background-color: #F2E6D6;
-  border: solid 3px #C1BCA6;
-  color: #433c33;
-  border-radius: 15px;
+  background-color: rgba(0,0,0,0);
+  border: solid 2px rgb(200, 181, 223);
+  color: white;
+  border-radius: 50px;
   height: 60px;
   margin: 10px;
   padding: 10px;
   text-align: center;
   width: 120px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Share Tech Mono', monospace;
   font-size: 16px;
   font-weight: 600;
 }
 
 .otherButtons button:hover {
-  background-color: #F2E6D6;
-  border: solid 3px #D4CEB6;
-  box-shadow: 1px 4px 5px grey;
-  color: #786C5B;
+  background-color: rgb(200, 181, 223);
+  border: solid 2px rgb(166, 135, 202);
+  box-shadow: 1px 4px 5px rgb(112, 136, 214);
+  color: rgba(0,0,0,1);
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 50px;
   margin: 10px;
   padding: 10px;
   text-align: center;

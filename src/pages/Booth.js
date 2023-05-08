@@ -12,57 +12,62 @@ import sticker1 from "../files/sticker-1.png";
 import sticker4 from "../files/sticker-4.png";
 import sticker2 from "../files/sticker-2.png";
 import sticker3 from "../files/sticker-3.png";
+import Header from "../components/Header";
 
 function Booth(app) {
   const navigate = useNavigate()
-  const [webcam, setWebcam] = useState(null);
   const [active, setActive] = React.useState(true);
-  const WebcamComponent = () => <Webcam />;
   const webcamRef = React.useRef(null);
+  const [inputValue, setInputValue] = useState('');
+  const [showInput, setShowInput] = useState(false);
 
   const videoConstraints = {
     width: 384,
     height: 576,
     facingMode: "user",
   };
-
-  // useEffect(() => {
-  //    const webcamElement = document.getElementById("webcam");
-  //    const canvasElement = document.getElementById("canvas");
-  //    const webcamInstance = new Webcam(webcamElement, "user", canvasElement);
-  //    setWebcam(webcamInstance);
-  //    return () => {
-  //      webcamInstance.stop();
-  //    };
-  //  }, []);
-
-  const handlePermission = () => {
-    setActive(!active)
-    if (webcam && active) {
-      webcam
-        .start()
-        .then(() => {
-          console.log("webcam started");
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        }
-    else {
-        webcam.stop()
-    }
+  const handleInputChange = (event) => {
+    setInputValue(event.currentTarget.value);
   };
 
-  // const WebcamCapture = () => {
-    
-  //   const capture = React.useCallback(
-  //     () => {
-  //       const imageSrc = webcamRef.current.getScreenshot();
-  //     },
-  //     [webcamRef]
-  //   );
-  // }
-  // const handleCapture = () => {
+  const handleFormSubmit = useCallback(async (e) => {
+    e.preventDefault();
+    const db = getFirestore(app);
+    const captionText = e.target.value;
+
+    const docRef = await addDoc(collection(db, "captions"), {
+      captionText,
+  });
+  
+    // Upload the input value to Firebase
+    // app.firestore().collection('captions').add({
+    //   text: inputValue
+    // });
+  
+    // Clear the input value
+    setInputValue('');
+    console.log(captionText)
+  }, [app]);
+
+  // const handlePermission = () => {
+  //   setActive(!active)
+  //   if (active) {
+  //     if (webcamRef && webcamRef.current) {
+  //       webcamRef.current
+  //         .start()
+  //         .then(() => {
+  //           console.log("webcam started");
+  //         })
+  //         .catch((error) => {
+  //           console.log(error);
+  //         })
+  //         }
+  //     else {
+  //       webcamRef.current.stop()
+  //     }
+  //   }
+  // };
+
     const capture = React.useCallback(() => {
       const countdownElement = document.getElementById("countdownElement");
       let countdown = 3;
@@ -102,31 +107,31 @@ function Booth(app) {
       }, 1000);
     }, [webcamRef]);
 
-  const addCaption = () => {
-    return (
-      <>
-          <form className="captionForm">
-              <label htmlFor="captionText" style={{fontSize: 24}}>Caption your photo.</label>
-              <textarea type="text" id="galleryCaption" name="captionText" maxlength="55"></textarea>
-              <button type="submit"onClick={(e)=>sendCaption(e)}>done</button>
-          </form>
-      </>
-    )
-  }
+  // const addCaption = (sendCaption) => {
+  //   return (
+  //     <>
+  //         {/* <form className="captionForm" onSubmit={(e) => sendCaption(e)}>
+  //             <label htmlFor="captionText" style={{fontSize: 24}}>Caption your photo.</label>
+  //             <textarea type="text" id="galleryCaption" name="captionText" maxlength="55" placeholder="captionform?"></textarea>
+  //             <button type="submit">done</button>
+  //         </form> */}
+  //     </>
+  //   )
+  // }
 
-  const sendCaption = useCallback(async (e) => {
-    e.preventDefault();
-    const db = getFirestore(app);
-    const captionText = e.currentTarget.captionText.value;
-    try {
-        const docRef = await addDoc(collection(db, "captions"), {
-            captionText,
-        });
-        // setPostSuccessful(true)
-    } catch (e) {
-        console.error("error adding document: ", e);
-    }
-  }, [app])
+  // const sendCaption = useCallback(async (e) => {
+  //   e.preventDefault();
+  //   const db = getFirestore(app);
+  //   const captionText = e.currentTarget.captionText.value;
+  //   try {
+  //       const docRef = await addDoc(collection(db, "captions"), {
+  //           captionText,
+  //       });
+  //       // setPostSuccessful(true)
+  //   } catch (e) {
+  //       console.error("error adding document: ", e);
+  //   }
+  // }, [app])
 
   const addToGallery = () => {
     navigate("/gallery")
@@ -140,21 +145,66 @@ function Booth(app) {
     // save the header file to the folder
     // import header file to arduino code and then run it to print
     // ???
-
   }
+
+  window.onload = function() {
+    const submit = document.querySelector('.submit-button');
+    const captionForm = document.querySelector('.captionForm');
+    const captionText = document.querySelector('.caption-area');
+  
+    submit.addEventListener("click", (e) => {
+      e.preventDefault();
+      const db = getFirestore(app);
+  
+      db.collection("captions").add({
+        captionText: captionText.value,
+      })
+      .then(() => {
+        captionForm.reset();
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+    });
+  }
+
+  // const captionForm = document.querySelector('.captionForm');
+  // const submit = document.querySelector('.submit-button');
+  // const captionText = document.querySelector('.caption-area');
+
+  // window.onload = function() {
+  //   submit.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     const db = getFirestore(app);
+    
+  //     db.collection(captionForm).addDoc(collection(db, "captions"), {
+  //       captionText: captionText.value,
+  //     })
+  //   });
+  // }
+
+  // const formElement = document.querySelector('.captionForm');
+
+  // formElement.addEventListener('submit', (e) => {
+  //   e.preventDefault(); // Prevent the form from submitting
+  //   console.log('Form submitted!');
+  // });
+
   return (
     <>
+          <Header/>
           <div className="boothWrapper">
             <div className="boothWrapper-2"> 
               <div className="cameraCanvasWrapper">
-              <div id="webcam" className="cameraStream" autoPlay playsInline ><Webcam
-                audio={false}
-                ref={webcamRef}
-                mirrored={true}
-                screenshotFormat="image/png"
-                videoConstraints={videoConstraints}
-              /></div>
-              
+                <div id="webcam" className="cameraStream" autoPlay playsInline ><Webcam
+                  audio={false}
+                  ref={webcamRef}
+                  mirrored={true}
+                  screenshotFormat="image/png"
+                  screenshotQuality={1}
+                  videoConstraints={videoConstraints}
+                  imageSmoothing={false}
+                /></div>
                 <canvas id="canvas" width="384" height="576" className="canvas"></canvas>
               </div>
                <div className="countdowns">
@@ -162,23 +212,29 @@ function Booth(app) {
                 </div>
               <div className="booth-buttons">
                 <div className="permissionButton">
-                    <FormGroup>
+                    {/* <FormGroup>
                         <FormControlLabel control={<Switch default color="default"/>} onClick={handlePermission} label="Camera" />
-                    </FormGroup>
+                    </FormGroup> */}
                 </div>
                 <div className="otherButtons">
                   <button id="" onClick={capture}>Take Photo</button>
+                  <button onClick={() => setShowInput(true)} style={{ textDecoration: 'none' } }>Add Caption</button>
+                  {showInput && (
+                    <form class="captionForm">
+                      {/* <input type="text" value={inputValue} onChange={handleInputChange} placeholder='55 characters'id="galleryCaption" name="captionText"/> */}
+                      <textarea class="caption-area" placeholder="write a caption here then press submit" maxLength={55}/>
+                      <button onclick="event.preventDefault();" class="submit-button" type="submit">Submit</button>
+                    </form>
+                  )}
                   <button onClick={addToGallery} style={{ textDecoration: 'none' } }>Add to Gallery</button>
-                  <button onClick={addCaption} style={{ textDecoration: 'none' } }>Add Caption</button>
+                  
                   <button id="print-button" onClick={printImage}>Print</button>
                 </div>
               </div>
 
           </div>
           <div className="addCaptionWrapper">
-            <AddCaptionForm 
-              sendCaption={sendCaption}
-            />
+            
           </div>
           <div className="boothRow">
             <div className="boothRow-1">
