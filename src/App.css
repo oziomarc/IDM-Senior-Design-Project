@@ -70,7 +70,7 @@ header p {
   font-family: 'Work Sans', sans-serif;
 }
 
-header h1:hover, p:hover {
+header h1:hover {
   color: rgb(177,135,203);
   cursor: pointer;
 }
@@ -468,9 +468,16 @@ form {
   border: 0.5px solid #e4e4e4;
   height: 378px;
   width: 280px;
+  transition: 0.8s;
+}
+
+.galleryItem:hover {
+  border: 4px solid rgb(255, 255, 255);
+  rotate: 5deg;
 }
 
 .galleryItem img {
+  object-fit: cover;
   height: 294px;
   margin-top: 20px;
   width: 238px;
@@ -503,7 +510,7 @@ form {
 #font-3 {
   font-family: 'Loved by the King', cursive;
   letter-spacing: 2px;
-  line-height: 18px;
+  line-height: 19px;
   font-weight: 500;
 }
 
@@ -521,15 +528,27 @@ form {
 #r1 {
   rotate: 5deg;
 }
+#r1:hover {
+  rotate: 0deg;
+}
 
 #r2 {
   rotate: -4deg;
+}
+#r2:hover {
+  rotate: 0deg;
 }
 
 #r3 {
   rotate: 6deg;
 }
+#r3:hover {
+  rotate: 0deg;
+}
 
 #r4 {
   rotate: -2deg;
+}
+#r4:hover {
+  rotate: 0deg;
 }

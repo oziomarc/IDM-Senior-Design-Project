@@ -141,8 +141,8 @@ function Booth() {
                       <textarea className="caption-area" placeholder="write a caption here then press submit" maxLength={55}/>
                       <button className="submit-button" type="submit">Submit</button>
                     </form>)}
-                  <button id="print-button" onClick={printImage}>Print</button>
                   <button onClick={addToGallery} style={{ textDecoration: 'none' } }>Add to Gallery</button>
+                  <button id="print-button" onClick={printImage}>Print</button>
                   
                 </div>
               </div>

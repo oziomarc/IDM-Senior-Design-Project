@@ -13,17 +13,19 @@ import filler9 from "../files/filler00009.png"
 import filler10 from "../files/filler00010.png"
 import filler11 from "../files/filler00011.jpg"
 import filler12 from "../files/filler00012.png"
-import filler13 from "../files/filler00013.png"
+import filler14 from "../files/filler00014.png"
+import filler15 from "../files/filler00015.png"
+import filler16 from "../files/filler00016.png"
+import filler17 from "../files/filler00017.jpeg"
+import filler18 from "../files/filler00018.jpg"
 import { storage } from "../firebase";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 function Gallery({ app, captionText }) {
   const [imageList, setImageList] = useState([])
-  const [captionList, setCaptionList] = useState([])
   const [captionData, setCaptionData] = useState([])
   const storageRef = ref(storage, `selfies/`)
   const captionsRef = ref(storage, `captions/`)
-  // const docRef = addDoc(collection, `selfieCaptions`)
 
   useEffect(() => {
     listAll(storageRef).then((response) => {
@@ -43,6 +45,7 @@ function Gallery({ app, captionText }) {
     })
   }, [])
 
+  captionData.sort().reverse()
 
   const queryData = async (app) => {
     if(!app) return [];
@@ -84,44 +87,56 @@ function Gallery({ app, captionText }) {
                   </div>
                 );
               })}
+              <div className="galleryItem" id="r4">
+                <img src={filler14} alt="filler-2"></img>
+                <p className="galleryCaption" id="font-3">met gala bathroom selfie 2017</p>
+              </div>
               <div className="galleryItem" id="r1">
                 <img src={filler2} alt="filler-2" ></img>
                 <p className="galleryCaption" id="font-3">self portrait c. 2016</p>
+              </div>
+              <div className="galleryItem" id="r4">
+                <a href="https://www.nbcnews.com/news/us-news/biden-takes-selfie-obama-n82626" target="_blank"><img src={filler16} alt="filler-16" ></img></a>
+                <p className="galleryCaption" id="font-5">the Oscars selfie that broke twitter. 2014.</p>
               </div>
               <div className="galleryItem" id="r2">
                 <a href="https://www.nbcnews.com/news/us-news/biden-takes-selfie-obama-n82626" target="_blank"><img src={filler10} alt="filler-10" ></img></a>
                 <p className="galleryCaption" id="font-5">Joe Biden's first selfie on Instagram, 2014</p>
               </div>
               <div className="galleryItem" id="r3">
-                <img src={filler3} alt="filler-3" ></img>
+                <a href="https://www.instagram.com/p/BDas2/?utm_source=ig_embed&ig_rid=b8c1adad-4d40-4d2e-98cc-2badea8ce8aa" target="_blank"><img src={filler3} alt="filler-3" ></img></a>
                 <p className="galleryCaption" id="font-1">the first #selfie on instagram, 2011</p>
               </div>
               <div className="galleryItem" id="r4">
                 <img src={filler9} alt="filler-9" ></img>
-                <p className="galleryCaption" id="font-1"></p>
+                <p className="galleryCaption" id="font-1">George Harrison at the Taj Mahal, 1966</p>
               </div>
               <div className="galleryItem" id="r2">
                 <img src={filler5} alt="filler-5" id="font-4"></img>
                 <p className="galleryCaption" id="font-4">the first selfie in space by Buzz Aldrin, 1966</p>
               </div>
               <div className="galleryItem" id="r1">
-                <img src={filler6} alt="filler-6" ></img>
-                <p className="galleryCaption" id="font-2">self portrait c. 1920</p>
+                <a href="https://collections.mcny.org/CS.aspx?VP3=SearchResult&IT=Thumb_Grid_M_Details_NoToolTip&IID=2F3XC58B7Q_U" target="_blank"><img src={filler6} alt="filler-6"></img></a>
+                <p className="galleryCaption" id="font-2">photographers posing together for a selfie 1920</p>
               </div>
               <div className="galleryItem" id="r3">
-                <img src={filler4} alt="filler-4" ></img>
-                <p className="galleryCaption" id="font-5">self portrait c. 1914</p>
+                <a href="https://www.theatlantic.com/technology/archive/2013/11/1913-duchess-anastasia-takes-a-selfie/281853/" target="_blank"><img src={filler4} alt="filler-4"></img></a>
+                <p className="galleryCaption" id="font-5"> Duchess Anastasia of Russia, 1913</p>
               </div>
               <div className="galleryItem" id="r1">
                 <img src={filler8} alt="filler-8" ></img>
                 <p className="galleryCaption" id="font-1">self portrait c. 1900</p>
+              </div>
+              <div className="galleryItem" id="r3">
+                <img src={filler18} alt="filler-18" ></img>
+                <p className="galleryCaption" id="font-5">unidentified woman takes a mirror selfie. 1900</p>
               </div>
               <div className="galleryItem" id="r4">
                 <img src={filler12} alt="filler-12" ></img>
                 <p className="galleryCaption" id="font-3">Self-portrait without beard Vincent van Gogh 1889</p>
               </div>
               <div className="galleryItem" id="r2">
-                <img src={filler7} alt="filler-7" ></img>
+                <a href="https://blogs.loc.gov/loc/2022/07/robert-cornelius-and-the-first-selfie/" target="_blank"><img src={filler7} alt="filler-7"></img></a>
                 <p className="galleryCaption" id="font-4">Robert Cornelius daguerreotype selfie, 1839</p>
               </div>
               <div className="galleryItem" id="r3">
@@ -132,10 +147,10 @@ function Gallery({ app, captionText }) {
                 <img src={filler1} alt="filler-1" ></img>
                 <p className="galleryCaption" id="font-2">“Portrait of a Man in a Turban” by Jan van Eyck 1433</p>
               </div>
-              {/* <div className="galleryItem">
-                <img src={filler13} alt="filler-13" id="2015"></img>
-                <p className="galleryCaption">Curiosity rover's self portrait at Mount Sharp, Mars, 2015</p>
-              </div> */}
+              <div className="galleryItem" id="r4">
+                <a href="https://en.wikipedia.org/wiki/Bek_(sculptor)" target="_blank"><img src={filler15}></img></a>
+                <p className="galleryCaption" id="font-1">self-portrait stela by Bek 1353 BC</p>
+              </div>
           </div>
         </div>
       </div>
