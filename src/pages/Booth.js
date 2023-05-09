@@ -135,7 +135,7 @@ function Booth() {
               <div className="booth-buttons">
                 <div className="otherButtons">
                   <button id="" onClick={capture}>Take Photo</button>
-                  <button onClick={() => setShowInput(true)} style={{ textDecoration: 'none' } }>Add Caption</button>
+                  <button onClick={() => setShowInput(true)} style={{ textDecoration: 'none' } }>Add Caption*</button>
                   {showInput && (
                     <form className="captionForm" onSubmit={handleFormSubmit}>
                       <textarea className="caption-area" placeholder="write a caption here then press submit" maxLength={55}/>

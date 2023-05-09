@@ -480,12 +480,56 @@ form {
   color: black;
   text-align: left;
   font-size: 20px;
-  /* font-family: 'Caveat', cursive; */
-  font-family: 'Edu NSW ACT Foundation', cursive;
+  /*  */
   /* font-family: 'Gaegu', cursive; */
-  /* font-family: 'Loved by the King', cursive; */
+  /*  */
   /* font-family: 'Mansalva', cursive; */
   font-weight: 350;
   padding-top: 1vh;
   width: 78%;
+}
+
+#font-1 {
+  font-family: 'Edu NSW ACT Foundation', cursive;
+  line-height: 20px;
+}
+
+#font-2 {
+  font-family: 'Caveat', cursive;
+  letter-spacing: 1.5px;
+  line-height: 17px;
+}
+
+#font-3 {
+  font-family: 'Loved by the King', cursive;
+  letter-spacing: 2px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+#font-4 {
+  font-family: 'Gaegu', cursive;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+#font-5 {
+  font-family: 'Mansalva', cursive;
+  line-height: 19px;
+}
+
+#r1 {
+  rotate: 5deg;
+}
+
+#r2 {
+  rotate: -4deg;
+}
+
+#r3 {
+  rotate: 6deg;
+}
+
+#r4 {
+  rotate: -2deg;
 }

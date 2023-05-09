@@ -61,7 +61,8 @@ function Gallery({ app, captionText }) {
     queryData(app).then(setCaptionData)
   }, [app])
 
-
+  const fontArray = ["font-1","font-2","font-3","font-4","font-5"]
+  const rotation = ["r1", "r2", "r3", "r4"]
   return (
     <>
       <Header />
@@ -70,71 +71,66 @@ function Gallery({ app, captionText }) {
             <h2>Timeline of Self Portraits</h2>
             <div className="galleryWrapper" id="galleryWrapper">
               {imageList.map((url, index) => {
+                const randomKey = Math.floor(Math.random()*4)
                 const caption = captionData[index] ? captionData[index].captionText : " ";
                 return (
                   <div key={index}>
-                    <div className="galleryItem">
+                    <div className="galleryItem" id={rotation[randomKey]}>
                       <img src={url} />
-                      <p className="galleryCaption">
+                      <p className="galleryCaption" id={fontArray[randomKey]}>
                         {caption}
                       </p>
                   </div>
                   </div>
                 );
               })}
-              {/* {captionData.map((caption) => {
-                  return <div>
-                    <p className="galleryCaption">{caption.captionText}</p>
-                  </div>
-                  }
-              )} */}
-              <div className="galleryItem">
-                <img src={filler2} alt="filler-2" id="2016"></img>
-                <p className="galleryCaption">self portrait c. 2016</p>
+              <div className="galleryItem" id="r1">
+                <img src={filler2} alt="filler-2" ></img>
+                <p className="galleryCaption" id="font-3">self portrait c. 2016</p>
               </div>
-              <div className="galleryItem">
-                <a href="https://www.nbcnews.com/news/us-news/biden-takes-selfie-obama-n82626" target="_blank"><img src={filler10} alt="filler-10" id="2014"></img></a>
-                <p className="galleryCaption">"Found a friend to join my first selfie on Instagram.", 2014</p>
+              <div className="galleryItem" id="r2">
+                <a href="https://www.nbcnews.com/news/us-news/biden-takes-selfie-obama-n82626" target="_blank"><img src={filler10} alt="filler-10" ></img></a>
+                <p className="galleryCaption" id="font-5">Joe Biden's first selfie on Instagram, 2014</p>
               </div>
-              <div className="galleryItem">
-                <img src={filler3} alt="filler-3" id="2011"></img>
-                <p className="galleryCaption">the first #selfie on instagram, 2011</p>
+              <div className="galleryItem" id="r3">
+                <img src={filler3} alt="filler-3" ></img>
+                <p className="galleryCaption" id="font-1">the first #selfie on instagram, 2011</p>
               </div>
-              <div className="galleryItem">
-                <img src={filler9} alt="filler-9" id="19662"></img>
-                <p className="galleryCaption"></p>
+              <div className="galleryItem" id="r4">
+                <img src={filler9} alt="filler-9" ></img>
+                <p className="galleryCaption" id="font-1"></p>
               </div>
-              <div className="galleryItem">
-                <img src={filler5} alt="filler-5" id="1966"></img>
-                <p className="galleryCaption">the first selfie in space by Buzz Aldrin, 1966</p>
+              <div className="galleryItem" id="r2">
+                <img src={filler5} alt="filler-5" id="font-4"></img>
+                <p className="galleryCaption" id="font-4">the first selfie in space by Buzz Aldrin, 1966</p>
               </div>
-              <div className="galleryItem">
-                <img src={filler6} alt="filler-6" id="1920"></img>
-                <p className="galleryCaption">self portrait c. 1920</p>
+              <div className="galleryItem" id="r1">
+                <img src={filler6} alt="filler-6" ></img>
+                <p className="galleryCaption" id="font-2">self portrait c. 1920</p>
               </div>
-              <div className="galleryItem">
-                <img src={filler4} alt="filler-4" id="1914"></img>
-                <p className="galleryCaption">self portrait c. 1914</p>
+              <div className="galleryItem" id="r3">
+                <img src={filler4} alt="filler-4" ></img>
+                <p className="galleryCaption" id="font-5">self portrait c. 1914</p>
               </div>
-              <div className="galleryItem">
-                <img src={filler8} alt="filler-8" id="1900"></img>
-                <p className="galleryCaption">self portrait c. 1900</p>
+              <div className="galleryItem" id="r1">
+                <img src={filler8} alt="filler-8" ></img>
+                <p className="galleryCaption" id="font-1">self portrait c. 1900</p>
               </div>
-              <div className="galleryItem">
-                <img src={filler12} alt="filler-12" id="1889"></img>
-                <p className="galleryCaption">Self-portrait without beard Vincent van Gogh 1889</p>
+              <div className="galleryItem" id="r4">
+                <img src={filler12} alt="filler-12" ></img>
+                <p className="galleryCaption" id="font-3">Self-portrait without beard Vincent van Gogh 1889</p>
               </div>
-              <div className="galleryItem">
-                <img src={filler7} alt="filler-7" id="1839"></img>
-                <p className="galleryCaption">Robert Cornelius daguerreotype selfie, 1839</p>
+              <div className="galleryItem" id="r2">
+                <img src={filler7} alt="filler-7" ></img>
+                <p className="galleryCaption" id="font-4">Robert Cornelius daguerreotype selfie, 1839</p>
               </div>
-              <div className="galleryItem">
-                <img src={filler11} alt="filler-11" id="1500"></img>
-                <p className="galleryCaption">Albrecht Durer's self-portrait c. 1500</p>
+              <div className="galleryItem" id="r3">
+                <img src={filler11} alt="filler-11" ></img>
+                <p className="galleryCaption" id="font-5">Albrecht Durer's self-portrait c. 1500</p>
               </div>
-              <div className="galleryItem">
-                <img src={filler1} alt="filler-1" id="1433"></img>
-                <p className="galleryCaption">“Portrait of a Man in a Turban” by Jan van Eyck 1433</p>
+              <div className="galleryItem" id="r1">
+                <img src={filler1} alt="filler-1" ></img>
+                <p className="galleryCaption" id="font-2">“Portrait of a Man in a Turban” by Jan van Eyck 1433</p>
               </div>
               {/* <div className="galleryItem">
                 <img src={filler13} alt="filler-13" id="2015"></img>
