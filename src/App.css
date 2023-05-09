@@ -207,7 +207,7 @@ p + h3 {
 }
 
 .back-button:hover {
-  background-color: #F7F7F7;
+  background-color: rgb(227, 213, 244);
 }
 
 textarea {
@@ -226,7 +226,6 @@ textarea {
   background: radial-gradient(circle, rgba(177,135,203,1) 0%, rgba(15,15,75,1) 69%);
   margin: 0;
   padding: 0;
-  height: 100%;
   margin: 0;
   padding-bottom: 30%;
   width: 100%;
@@ -264,6 +263,7 @@ textarea {
   font-family: 'Cormorant Upright', serif;
   font-size: 5rem;
   font-weight: 350;
+  margin-bottom: 20px;
 }
 
 .cameraCanvasWrapper {
@@ -335,18 +335,21 @@ video {
 }
 
 .otherButtons button {
+  align-items: center;
+  display: flex;
   background-color: rgba(0,0,0,0);
   border: solid 2px rgb(200, 181, 223);
   color: white;
   border-radius: 50px;
   height: 60px;
+  justify-content: center;
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   transition: 0.5s;
   width: 120px;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -358,7 +361,7 @@ video {
   cursor: pointer;
   border-radius: 50px;
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
 }
 
@@ -381,18 +384,21 @@ video {
   background-color: #c3b8a7;
   cursor: pointer;
 }
+
 .boothRow-1 {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
 }
+
 .boothRow-2 {
   justify-self: end;
   align-items: flex-end;
   display: flex;
   flex-direction: column;
-  width: 1300px;
+  width: 1350px;
 }
+
 #b-1 {
   border: 2px solid rgb(200, 181, 223);
   border-radius: 200px;
@@ -400,12 +406,13 @@ video {
   margin: 2px;
   width: 402px;
 }
+
 #b-2 {
   border: 2px solid rgb(200, 181, 223);
   border-radius: 200px;
   height: 10px;
   margin: 2px;
-  width: 150px;
+  width: 180px;
 }
 
 .countdowns {
@@ -442,32 +449,37 @@ form {
   font-family: 'Work Sans', sans-serif;
   font-size: 2.5rem;
 }
+
 .galleryWrapper {
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
 }
+
 .galleryWrapper > div {
   margin: 4vmin;
 }
+
 .galleryItem {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgb(249, 247, 239);
   border: 0.5px solid #e4e4e4;
-  height: 514px;
-  width: 380px;
+  height: 378px;
+  width: 280px;
 }
+
 .galleryItem img {
-  height: 410px;
+  height: 294px;
   margin-top: 20px;
-  width: 332px;
+  width: 238px;
 }
+
 .galleryCaption {
   color: black;
   text-align: left;
-  font-size: 26px;
+  font-size: 20px;
   /* font-family: 'Caveat', cursive; */
   font-family: 'Edu NSW ACT Foundation', cursive;
   /* font-family: 'Gaegu', cursive; */
@@ -475,8 +487,5 @@ form {
   /* font-family: 'Mansalva', cursive; */
   font-weight: 350;
   padding-top: 1vh;
-  width: 75%;
-}
-.galleryCaption p {
-
+  width: 78%;
 }

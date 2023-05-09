@@ -22,7 +22,7 @@ function Gallery({ app, captionText }) {
   const [captionList, setCaptionList] = useState([])
   const [captionData, setCaptionData] = useState([])
   const storageRef = ref(storage, `selfies/`)
-  const captionsRef = ref(storage, "captions/")
+  const captionsRef = ref(storage, `captions/`)
   // const docRef = addDoc(collection, `selfieCaptions`)
 
   useEffect(() => {
@@ -33,9 +33,7 @@ function Gallery({ app, captionText }) {
         })
       })
     })
-  }, [])
 
-  useEffect(() => {
     listAll(captionsRef).then((response) => {
       response.items.forEach((item) => {
         captionData.map((caption) => (
@@ -44,6 +42,7 @@ function Gallery({ app, captionText }) {
       })
     })
   }, [])
+
 
   const queryData = async (app) => {
     if(!app) return [];
@@ -73,22 +72,25 @@ function Gallery({ app, captionText }) {
               {imageList.map((url) => {
                   return <div className="galleryItem">
                     <img src={url}></img>
-                    {captionData.map((caption) => {
-                      <p className="galleryCaption">{caption.captionText}</p>
-                    })}
                     </div>
               })}
+              {captionData.map((caption) => {
+                  return <div>
+                    <p className="galleryCaption">{caption.captionText}</p>
+                  </div>
+                  }
+              )}
               <div className="galleryItem">
                 <img src={filler2} alt="filler-2" id="2016"></img>
                 <p className="galleryCaption">self portrait c. 2016</p>
               </div>
               <div className="galleryItem">
-                <img src={filler10} alt="filler-10" id="2014"></img>
-                <p className="galleryCaption">self portrait c. 2014</p>
+                <a href="https://www.nbcnews.com/news/us-news/biden-takes-selfie-obama-n82626" target="_blank"><img src={filler10} alt="filler-10" id="2014"></img></a>
+                <p className="galleryCaption">"Found a friend to join my first selfie on Instagram.", 2014</p>
               </div>
               <div className="galleryItem">
                 <img src={filler3} alt="filler-3" id="2011"></img>
-                <p className="galleryCaption">self portrait c. 2011</p>
+                <p className="galleryCaption">the first #selfie on instagram, 2011</p>
               </div>
               <div className="galleryItem">
                 <img src={filler9} alt="filler-9" id="19662"></img>
@@ -96,7 +98,7 @@ function Gallery({ app, captionText }) {
               </div>
               <div className="galleryItem">
                 <img src={filler5} alt="filler-5" id="1966"></img>
-                <p className="galleryCaption">the first selfie in space by Buzz Aldrin. 1966</p>
+                <p className="galleryCaption">the first selfie in space by Buzz Aldrin, 1966</p>
               </div>
               <div className="galleryItem">
                 <img src={filler6} alt="filler-6" id="1920"></img>
