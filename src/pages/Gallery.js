@@ -69,17 +69,25 @@ function Gallery({ app, captionText }) {
         <div className="galleryPage">
             <h2>Timeline of Self Portraits</h2>
             <div className="galleryWrapper" id="galleryWrapper">
-              {imageList.map((url) => {
-                  return <div className="galleryItem">
-                    <img src={url}></img>
-                    </div>
+              {imageList.map((url, index) => {
+                const caption = captionData[index] ? captionData[index].captionText : " ";
+                return (
+                  <div key={index}>
+                    <div className="galleryItem">
+                      <img src={url} />
+                      <p className="galleryCaption">
+                        {caption}
+                      </p>
+                  </div>
+                  </div>
+                );
               })}
-              {captionData.map((caption) => {
+              {/* {captionData.map((caption) => {
                   return <div>
                     <p className="galleryCaption">{caption.captionText}</p>
                   </div>
                   }
-              )}
+              )} */}
               <div className="galleryItem">
                 <img src={filler2} alt="filler-2" id="2016"></img>
                 <p className="galleryCaption">self portrait c. 2016</p>
