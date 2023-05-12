@@ -142,7 +142,7 @@ function Booth() {
                       <button className="submit-button" type="submit">Submit</button>
                     </form>)}
                   <button onClick={addToGallery} style={{ textDecoration: 'none' } }>Add to Gallery</button>
-                  <button id="print-button" onClick={printImage}>Print</button>
+                  <button id="print-button" onClick={printImage}>Print Image</button>
                   
                 </div>
               </div>

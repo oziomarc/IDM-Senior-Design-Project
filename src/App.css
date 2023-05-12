@@ -76,10 +76,13 @@ header h1:hover {
 }
 
 .pageWrapper {
+  display: flex;
+  flex-direction: column;
   background: rgb(177,135,203);
   background: radial-gradient(circle, rgba(177,135,203,1) 0%, rgba(15,15,75,1) 69%);
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 /* LANDING */
@@ -125,17 +128,13 @@ p + h3 {
 }
 
 #about {
-  align-items: center;
-  align-self: center;
-  justify-content: center;
   display: flex;
   flex-direction: column;
-  padding: 8vh 30vw 0vh 30vw;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  padding: 8vh 25vw 0vh 25vw;
 }
-
-/* #about p:last-child {
-  margin-bottom: 50vh;
-} */
 
 #about p {
   color: rgb(232, 241, 250);
@@ -143,13 +142,13 @@ p + h3 {
   display: flex;
   flex-direction: column;
   font-family: 'Work Sans', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 150;
-  line-height: 2.5rem;
-  padding: 2vmin;
+  font-size: 1.8rem;
+  font-weight: 160;
+  line-height: 3rem;
+  margin: 15vmin 0 15vmin 0;
+  /* padding: 2vmin; */
   text-align: center;
 }
-
 
 #author {
   align-items: center;
@@ -282,6 +281,16 @@ textarea {
 video {
   object-fit: cover;
   margin-right: 5px;
+}
+
+.heroVideo {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  margin-top: 0px;
+  margin-top: 48%;
+  width: 101vw;
+  height: auto;
 }
 
 #canvas {
@@ -437,17 +446,35 @@ form {
 }
 /* GALLERY */
 
+#back-to-top-button {
+  bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  position:fixed;
+  margin-right: 50px;
+  width: 95%;
+}
+
+#back-to-top-button button {
+  background-color: rgba(0,0,0,0);
+  border: none;
+}
+
 .galleryPage {
   background: rgb(191,157,0);
   background: radial-gradient(circle, rgba(191,157,0,1) 0%, rgba(23,23,115,1) 87%);    
 }
 
 .galleryPage h2 {
+  border: 2px solid rgb(200, 181, 223);
+  border-radius: 200px;
   color: aliceblue;
-  padding: 8vmin 4vmin;
+  margin: 8vmin 4vmin;
+  padding: 20px;
   text-align: center;
-  font-family: 'Work Sans', sans-serif;
-  font-size: 2.5rem;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 4rem;
 }
 
 .galleryWrapper {
@@ -511,7 +538,7 @@ form {
   font-family: 'Loved by the King', cursive;
   letter-spacing: 2px;
   line-height: 19px;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 #font-4 {
