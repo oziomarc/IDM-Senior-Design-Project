@@ -11,9 +11,7 @@ import Header from "../components/Header";
 
 function Booth() {
   const navigate = useNavigate()
-  const [active, setActive] = React.useState(true);
   const webcamRef = React.useRef(null);
-  const [inputValue, setInputValue] = useState('');
   const [showInput, setShowInput] = useState(false);
 
   const videoConstraints = {
@@ -94,16 +92,6 @@ function Booth() {
   const addToGallery = () => {
     navigate("/gallery")
   }
-  
-  const printImage = () => {
-    const printedImage = new Image();
-    // get the image url that was just captured
-    // download the image to headerImages folder in src
-    // run the image conversion processing code
-    // save the header file to the folder
-    // import header file to arduino code and then run it to print
-    // ???
-  }
 
   return (
     <>
@@ -142,7 +130,7 @@ function Booth() {
                       <button className="submit-button" type="submit">Submit</button>
                     </form>)}
                   <button onClick={addToGallery} style={{ textDecoration: 'none' } }>Add to Gallery</button>
-                  <button id="print-button" onClick={printImage}>Print Image</button>
+                  <button id="print-button">Print Image</button>
                   
                 </div>
               </div>
